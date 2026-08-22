@@ -19,13 +19,13 @@
 
     <style>
 
-        /* =================================
+        /* =====================================================
            TRIPS PAGE
-        ================================= */
+        ===================================================== */
 
         .trips-page {
 
-            max-width: 1100px;
+            max-width: 1150px;
 
             margin: 60px auto;
 
@@ -67,9 +67,9 @@
         }
 
 
-        /* =================================
-           TRIP SECTION
-        ================================= */
+        /* =====================================================
+           TRIP CARD
+        ===================================================== */
 
         .trip-section {
 
@@ -109,7 +109,7 @@
 
             margin: 0;
 
-            font-size: 27px;
+            font-size: 28px;
 
             color: #222;
 
@@ -137,9 +137,9 @@
         }
 
 
-        /* =================================
+        /* =====================================================
            TRIP INFORMATION
-        ================================= */
+        ===================================================== */
 
         .trip-info-grid {
 
@@ -192,9 +192,125 @@
         }
 
 
-        /* =================================
-           INTERESTS
-        ================================= */
+        /* =====================================================
+           STOPS PREVIEW
+        ===================================================== */
+
+        .stops-preview {
+
+            background: #fafafa;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .stops-preview h3 {
+
+            margin: 0 0 15px;
+
+            font-size: 18px;
+
+        }
+
+
+        .stop-preview-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px;
+
+            background: white;
+
+            border: 1px solid #eeeeee;
+
+            border-radius: 12px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .stop-number {
+
+            width: 32px;
+
+            height: 32px;
+
+            min-width: 32px;
+
+            border-radius: 50%;
+
+            background: #4263eb;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+        }
+
+
+        .stop-preview-info {
+
+            flex: 1;
+
+        }
+
+
+        .stop-preview-city {
+
+            font-weight: 700;
+
+            color: #222;
+
+        }
+
+
+        .stop-preview-date {
+
+            color: #777;
+
+            font-size: 13px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .more-stops {
+
+            text-align: center;
+
+            color: #4263eb;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =====================================================
+           PLANS
+        ===================================================== */
 
         .trip-interests {
 
@@ -229,9 +345,9 @@
         }
 
 
-        /* =================================
+        /* =====================================================
            ACTION BUTTONS
-        ================================= */
+        ===================================================== */
 
         .trip-actions {
 
@@ -252,7 +368,7 @@
 
             border: none;
 
-            padding: 10px 18px;
+            padding: 11px 18px;
 
             border-radius: 10px;
 
@@ -321,9 +437,9 @@
         }
 
 
-        /* =================================
-           ADD SECTION BUTTON
-        ================================= */
+        /* =====================================================
+           ADD TRIP
+        ===================================================== */
 
         .add-section-container {
 
@@ -370,9 +486,9 @@
         }
 
 
-        /* =================================
-           EMPTY
-        ================================= */
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
 
         .no-trip {
 
@@ -414,9 +530,9 @@
         }
 
 
-        /* =================================
+        /* =====================================================
            MODAL
-        ================================= */
+        ===================================================== */
 
         .trip-modal {
 
@@ -429,7 +545,7 @@
             z-index: 1000;
 
             background:
-                rgba(0, 0, 0, 0.55);
+                rgba(0, 0, 0, 0.60);
 
             align-items: center;
 
@@ -451,7 +567,7 @@
 
             width: 100%;
 
-            max-width: 550px;
+            max-width: 750px;
 
             background: white;
 
@@ -483,6 +599,8 @@
 
             margin: 0;
 
+            font-size: 25px;
+
         }
 
 
@@ -496,8 +614,14 @@
 
             cursor: pointer;
 
+            color: #555;
+
         }
 
+
+        /* =====================================================
+           MODAL DETAILS
+        ===================================================== */
 
         .modal-detail {
 
@@ -534,9 +658,141 @@
         }
 
 
-        /* =================================
+        /* =====================================================
+           FULL ITINERARY
+        ===================================================== */
+
+        .itinerary-title {
+
+            margin-top: 30px;
+
+            margin-bottom: 15px;
+
+            font-size: 22px;
+
+            color: #222;
+
+        }
+
+
+        .itinerary-stop {
+
+            border: 1px solid #e5e5e5;
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
+            background: #ffffff;
+
+        }
+
+
+        .itinerary-stop-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .itinerary-city {
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #222;
+
+        }
+
+
+        .itinerary-stop-number {
+
+            display: inline-flex;
+
+            width: 30px;
+
+            height: 30px;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #4263eb;
+
+            color: white;
+
+            margin-right: 8px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .itinerary-dates {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .activities-title {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .activity-list {
+
+            margin: 0;
+
+            padding-left: 20px;
+
+        }
+
+
+        .activity-list li {
+
+            margin-bottom: 7px;
+
+            color: #555;
+
+        }
+
+
+        .no-activities {
+
+            color: #999;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
            EDIT FORM
-        ================================= */
+        ===================================================== */
 
         .edit-group {
 
@@ -605,9 +861,9 @@
         }
 
 
-        /* =================================
+        /* =====================================================
            RESPONSIVE
-        ================================= */
+        ===================================================== */
 
         @media (max-width: 800px) {
 
@@ -650,6 +906,15 @@
 
             }
 
+
+            .itinerary-stop-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
         }
 
     </style>
@@ -660,7 +925,9 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav class="navbar">
 
@@ -681,6 +948,7 @@
             Explore
         </a>
 
+
         <a
             href="trips.html"
             class="active"
@@ -688,9 +956,11 @@
             My Trips
         </a>
 
+
         <a href="index.html#destinations">
             Destinations
         </a>
+
 
         <a href="index.html#itinerary">
             Itinerary
@@ -715,7 +985,9 @@
 
 
 
-<!-- ================= TRIPS ================= -->
+<!-- =====================================================
+     TRIPS
+===================================================== -->
 
 <main class="trips-page">
 
@@ -741,9 +1013,6 @@
     </div>
 
 
-
-    <!-- ADD ANOTHER TRIP -->
-
     <div class="add-section-container">
 
         <button
@@ -751,7 +1020,7 @@
             onclick="addAnotherTrip()"
         >
 
-            + Add Another Section
+            + Create New Trip
 
         </button>
 
@@ -762,9 +1031,9 @@
 
 
 
-<!-- =========================================
-     VIEW MODAL
-========================================= -->
+<!-- =====================================================
+     VIEW TRIP / FULL ITINERARY MODAL
+===================================================== -->
 
 <div
     id="viewModal"
@@ -777,7 +1046,7 @@
         <div class="modal-header">
 
             <h2>
-                Trip Details
+                Complete Trip Itinerary
             </h2>
 
 
@@ -792,6 +1061,8 @@
 
         </div>
 
+
+        <!-- BASIC DETAILS -->
 
         <div class="modal-detail">
 
@@ -820,22 +1091,10 @@
         <div class="modal-detail">
 
             <strong>
-                Start Date
+                Overall Travel Dates
             </strong>
 
-            <span id="viewStartDate">
-            </span>
-
-        </div>
-
-
-        <div class="modal-detail">
-
-            <strong>
-                End Date
-            </strong>
-
-            <span id="viewEndDate">
+            <span id="viewDates">
             </span>
 
         </div>
@@ -868,11 +1127,25 @@
         <div class="modal-detail">
 
             <strong>
-                Your Plans
+                Plans / Interests
             </strong>
 
             <span id="viewInterests">
             </span>
+
+        </div>
+
+
+        <!-- FULL ITINERARY -->
+
+        <h3 class="itinerary-title">
+
+            🗺️ Your Itinerary
+
+        </h3>
+
+
+        <div id="fullItinerary">
 
         </div>
 
@@ -883,9 +1156,9 @@
 
 
 
-<!-- =========================================
+<!-- =====================================================
      EDIT MODAL
-========================================= -->
+===================================================== -->
 
 <div
     id="editModal"
@@ -975,26 +1248,52 @@
 
 <script>
 
-
-/* =========================================
-   STORAGE KEY
-========================================= */
-
-const TRIP_STORAGE_KEY =
-    "globeTrotterTrip";
+/* =====================================================
+   GLOBETROTTER - TRIPS PAGE
+   Complete Trip + Itinerary Handling
+===================================================== */
 
 
+/* =====================================================
+   STORAGE KEYS
+=====================================================
 
-/* =========================================
+   The code checks both keys so it can work with
+   your previous saved trips as well.
+
+===================================================== */
+
+const TRIP_STORAGE_KEY = "globeTrotterTrips";
+
+const OLD_TRIP_STORAGE_KEY = "globeTrotterTrip";
+
+
+
+/* =====================================================
    GET TRIPS
-========================================= */
+===================================================== */
 
 function getTrips() {
 
-    const saved =
+    let saved =
         localStorage.getItem(
             TRIP_STORAGE_KEY
         );
+
+
+    /*
+       If the new storage key doesn't exist,
+       check the old key.
+    */
+
+    if (!saved) {
+
+        saved =
+            localStorage.getItem(
+                OLD_TRIP_STORAGE_KEY
+            );
+
+    }
 
 
     if (!saved) {
@@ -1011,13 +1310,11 @@ function getTrips() {
 
 
         /*
-           If old data is one object,
-           convert it into an array.
+           Old version stored one object.
+           Convert it to an array.
         */
 
-        if (
-            !Array.isArray(data)
-        ) {
+        if (!Array.isArray(data)) {
 
             return [data];
 
@@ -1043,26 +1340,29 @@ function getTrips() {
 
 
 
-/* =========================================
+/* =====================================================
    SAVE TRIPS
-========================================= */
+===================================================== */
 
 function saveTrips(trips) {
 
     localStorage.setItem(
+
         TRIP_STORAGE_KEY,
+
         JSON.stringify(trips)
+
     );
 
 }
 
 
 
-/* =========================================
+/* =====================================================
    LOAD TRIPS
-========================================= */
+===================================================== */
 
-function loadTrip() {
+function loadTrips() {
 
     const container =
         document.getElementById(
@@ -1074,9 +1374,9 @@ function loadTrip() {
         getTrips();
 
 
-    /* =====================================
+    /* =================================================
        NO TRIPS
-    ===================================== */
+    ================================================= */
 
     if (trips.length === 0) {
 
@@ -1094,7 +1394,7 @@ function loadTrip() {
 
                 <p>
                     Create your first trip
-                    to see it here.
+                    and build your itinerary.
                 </p>
 
                 <button
@@ -1116,16 +1416,15 @@ function loadTrip() {
 
 
 
-    /* =====================================
+    /* =================================================
        DISPLAY TRIPS
-    ===================================== */
+    ================================================= */
 
     container.innerHTML = "";
 
 
     trips.forEach(
         function(trip, index) {
-
 
             const start =
                 formatDate(
@@ -1154,17 +1453,36 @@ function loadTrip() {
                 );
 
 
-            const interests =
-                trip.interests &&
-                trip.interests.trim()
-                    ? trip.interests
-                    : "Explore the destination and enjoy the local experience.";
-
-
             const tripType =
                 trip.tripType ||
                 trip.travelStyle ||
                 "Standard Trip";
+
+
+            const destination =
+                trip.destination ||
+                "Unnamed Trip";
+
+
+            const interests =
+                trip.interests &&
+                String(trip.interests).trim()
+
+                    ? trip.interests
+
+                    : "Explore the destination and enjoy the local experience.";
+
+
+            /*
+               Get stops.
+
+               Supports:
+               trip.stops
+               trip.itinerary
+            */
+
+            const stops =
+                getTripStops(trip);
 
 
             const section =
@@ -1186,7 +1504,7 @@ function loadTrip() {
                         <h2 class="trip-title">
 
                             ${escapeHTML(
-                                trip.destination
+                                destination
                             )}
 
                         </h2>
@@ -1205,7 +1523,6 @@ function loadTrip() {
                 </div>
 
 
-
                 <div class="trip-info-grid">
 
 
@@ -1218,13 +1535,14 @@ function loadTrip() {
                         <span class="trip-info-value">
 
                             ${start}
+
                             to
+
                             ${end}
 
                         </span>
 
                     </div>
-
 
 
                     <div class="trip-info">
@@ -1247,7 +1565,6 @@ function loadTrip() {
                     </div>
 
 
-
                     <div class="trip-info">
 
                         <span class="trip-info-label">
@@ -1263,18 +1580,20 @@ function loadTrip() {
                     </div>
 
 
-
                     <div class="trip-info">
 
                         <span class="trip-info-label">
-                            Trip Type
+                            Stops
                         </span>
 
                         <span class="trip-info-value">
 
-                            ${escapeHTML(
-                                tripType
-                            )}
+                            ${stops.length}
+
+                            ${stops.length === 1
+                                ? " City"
+                                : " Cities"
+                            }
 
                         </span>
 
@@ -1284,6 +1603,33 @@ function loadTrip() {
                 </div>
 
 
+                <!-- STOPS PREVIEW -->
+
+                ${
+                    stops.length > 0
+
+                    ? `
+
+                        <div class="stops-preview">
+
+                            <h3>
+                                🗺️ Itinerary
+                            </h3>
+
+                            ${renderStopsPreview(
+                                stops
+                            )}
+
+                        </div>
+
+                    `
+
+                    : ""
+
+                }
+
+
+                <!-- INTERESTS -->
 
                 <div class="trip-interests">
 
@@ -1302,7 +1648,6 @@ function loadTrip() {
                 </div>
 
 
-
                 <!-- ACTION BUTTONS -->
 
                 <div class="trip-actions">
@@ -1313,7 +1658,7 @@ function loadTrip() {
                         onclick="viewTrip(${index})"
                     >
 
-                        👁 View
+                        👁 View Full Itinerary
 
                     </button>
 
@@ -1354,9 +1699,171 @@ function loadTrip() {
 
 
 
-/* =========================================
-   VIEW TRIP
-========================================= */
+/* =====================================================
+   GET STOPS
+===================================================== */
+
+function getTripStops(trip) {
+
+    if (
+        Array.isArray(trip.stops)
+    ) {
+
+        return trip.stops;
+
+    }
+
+
+    if (
+        Array.isArray(trip.itinerary)
+    ) {
+
+        return trip.itinerary;
+
+    }
+
+
+    return [];
+
+}
+
+
+
+/* =====================================================
+   RENDER STOPS PREVIEW
+===================================================== */
+
+function renderStopsPreview(stops) {
+
+    const maxStops = 4;
+
+
+    let html = "";
+
+
+    stops
+        .slice(0, maxStops)
+        .forEach(
+            function(stop, index) {
+
+                const city =
+                    stop.city ||
+                    stop.destination ||
+                    stop.name ||
+                    "Unknown City";
+
+
+                const startDate =
+                    stop.startDate ||
+                    stop.fromDate ||
+                    "";
+
+
+                const endDate =
+                    stop.endDate ||
+                    stop.toDate ||
+                    "";
+
+
+                let dateText =
+                    "Dates not specified";
+
+
+                if (
+                    startDate &&
+                    endDate
+                ) {
+
+                    dateText =
+                        formatDate(
+                            startDate
+                        )
+                        +
+                        " - "
+                        +
+                        formatDate(
+                            endDate
+                        );
+
+                }
+
+                else if (startDate) {
+
+                    dateText =
+                        formatDate(
+                            startDate
+                        );
+
+                }
+
+
+                html += `
+
+                    <div class="stop-preview-item">
+
+                        <div class="stop-number">
+
+                            ${index + 1}
+
+                        </div>
+
+
+                        <div class="stop-preview-info">
+
+                            <div class="stop-preview-city">
+
+                                ${escapeHTML(
+                                    city
+                                )}
+
+                            </div>
+
+
+                            <div class="stop-preview-date">
+
+                                ${escapeHTML(
+                                    dateText
+                                )}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+    if (
+        stops.length > maxStops
+    ) {
+
+        html += `
+
+            <div class="more-stops">
+
+                + ${stops.length - maxStops}
+                more stop(s)
+
+            </div>
+
+        `;
+
+    }
+
+
+    return html;
+
+}
+
+
+
+/* =====================================================
+   VIEW FULL TRIP
+===================================================== */
 
 function viewTrip(index) {
 
@@ -1386,31 +1893,39 @@ function viewTrip(index) {
         );
 
 
-    document.getElementById(
-        "viewDestination"
-    ).textContent =
-        trip.destination || "-";
-
-
-    document.getElementById(
-        "viewTripType"
-    ).textContent =
+    const tripType =
         trip.tripType ||
         trip.travelStyle ||
         "Standard Trip";
 
 
     document.getElementById(
-        "viewStartDate"
+        "viewDestination"
     ).textContent =
-        formatDate(
-            trip.startDate
-        );
+        trip.destination ||
+        "Not specified";
 
 
     document.getElementById(
-        "viewEndDate"
+        "viewTripType"
     ).textContent =
+        tripType;
+
+
+    document.getElementById(
+        "viewDates"
+    ).textContent =
+
+        formatDate(
+            trip.startDate
+        )
+
+        +
+
+        " to "
+
+        +
+
         formatDate(
             trip.endDate
         );
@@ -1419,7 +1934,9 @@ function viewTrip(index) {
     document.getElementById(
         "viewDuration"
     ).textContent =
-        days +
+
+        days
+        +
         (
             days === 1
                 ? " Day"
@@ -1430,7 +1947,9 @@ function viewTrip(index) {
     document.getElementById(
         "viewBudget"
     ).textContent =
-        "₹" +
+
+        "₹"
+        +
         Number(
             trip.budget || 0
         ).toLocaleString(
@@ -1441,8 +1960,57 @@ function viewTrip(index) {
     document.getElementById(
         "viewInterests"
     ).textContent =
+
         trip.interests ||
+
         "No interests added.";
+
+
+
+    /* =================================================
+       FULL ITINERARY
+    ================================================= */
+
+    const stops =
+        getTripStops(trip);
+
+
+    const itineraryContainer =
+        document.getElementById(
+            "fullItinerary"
+        );
+
+
+    if (
+        stops.length === 0
+    ) {
+
+        itineraryContainer.innerHTML = `
+
+            <div class="modal-detail">
+
+                <strong>
+                    Itinerary
+                </strong>
+
+                <span>
+                    No stops have been added yet.
+                </span>
+
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        itineraryContainer.innerHTML =
+            renderFullItinerary(
+                stops
+            );
+
+    }
 
 
     document.getElementById(
@@ -1455,9 +2023,248 @@ function viewTrip(index) {
 
 
 
-/* =========================================
-   CLOSE VIEW
-========================================= */
+/* =====================================================
+   RENDER COMPLETE ITINERARY
+===================================================== */
+
+function renderFullItinerary(stops) {
+
+    let html = "";
+
+
+    stops.forEach(
+        function(stop, index) {
+
+            const city =
+                stop.city ||
+                stop.destination ||
+                stop.name ||
+                "Unknown City";
+
+
+            const startDate =
+                stop.startDate ||
+                stop.fromDate ||
+                "";
+
+
+            const endDate =
+                stop.endDate ||
+                stop.toDate ||
+                "";
+
+
+            let dateText =
+                "Dates not specified";
+
+
+            if (
+                startDate &&
+                endDate
+            ) {
+
+                dateText =
+
+                    formatDate(
+                        startDate
+                    )
+
+                    +
+
+                    " - "
+
+                    +
+
+                    formatDate(
+                        endDate
+                    );
+
+            }
+
+            else if (startDate) {
+
+                dateText =
+                    formatDate(
+                        startDate
+                    );
+
+            }
+
+
+            /*
+               Activities can be stored as:
+
+               activities: []
+
+               OR
+
+               activity: "..."
+
+               OR
+
+               plans: []
+            */
+
+            let activities = [];
+
+
+            if (
+                Array.isArray(
+                    stop.activities
+                )
+            ) {
+
+                activities =
+                    stop.activities;
+
+            }
+
+            else if (
+                Array.isArray(
+                    stop.plans
+                )
+            ) {
+
+                activities =
+                    stop.plans;
+
+            }
+
+            else if (
+                stop.activity
+            ) {
+
+                activities = [
+                    stop.activity
+                ];
+
+            }
+
+
+            html += `
+
+                <div class="itinerary-stop">
+
+
+                    <div class="itinerary-stop-header">
+
+                        <div>
+
+                            <span class="itinerary-stop-number">
+
+                                ${index + 1}
+
+                            </span>
+
+
+                            <span class="itinerary-city">
+
+                                ${escapeHTML(
+                                    city
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="itinerary-dates">
+
+                            📅 ${escapeHTML(
+                                dateText
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="activities-title">
+
+                            🎯 Activities
+
+                        </div>
+
+
+                        ${
+                            activities.length > 0
+
+                            ?
+
+                            `
+
+                                <ul class="activity-list">
+
+                                    ${activities
+                                        .map(
+                                            function(activity) {
+
+                                                return `
+
+                                                    <li>
+
+                                                        ${escapeHTML(
+                                                            typeof activity === "object"
+
+                                                                ? (
+                                                                    activity.name ||
+                                                                    activity.title ||
+                                                                    JSON.stringify(activity)
+                                                                )
+
+                                                                : activity
+                                                        )}
+
+                                                    </li>
+
+                                                `;
+
+                                            }
+                                        )
+                                        .join("")
+                                    }
+
+                                </ul>
+
+                            `
+
+                            :
+
+                            `
+
+                                <div class="no-activities">
+
+                                    No activities added
+                                    for this stop.
+
+                                </div>
+
+                            `
+
+                        }
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    return html;
+
+}
+
+
+
+/* =====================================================
+   CLOSE VIEW MODAL
+===================================================== */
 
 function closeViewModal() {
 
@@ -1471,9 +2278,9 @@ function closeViewModal() {
 
 
 
-/* =========================================
+/* =====================================================
    EDIT TRIP
-========================================= */
+===================================================== */
 
 let editingTripIndex = null;
 
@@ -1506,19 +2313,25 @@ function editTrip(index) {
     document.getElementById(
         "editDestination"
     ).value =
-        trip.destination || "";
+
+        trip.destination ||
+        "";
 
 
     document.getElementById(
         "editStartDate"
     ).value =
-        trip.startDate || "";
+
+        trip.startDate ||
+        "";
 
 
     document.getElementById(
         "editEndDate"
     ).value =
-        trip.endDate || "";
+
+        trip.endDate ||
+        "";
 
 
     document.getElementById(
@@ -1531,9 +2344,9 @@ function editTrip(index) {
 
 
 
-/* =========================================
+/* =====================================================
    SAVE EDITED TRIP
-========================================= */
+===================================================== */
 
 function saveEditedTrip() {
 
@@ -1558,10 +2371,6 @@ function saveEditedTrip() {
         ).value;
 
 
-    /* =====================================
-       VALIDATION
-    ===================================== */
-
     if (!startDate) {
 
         alert(
@@ -1585,7 +2394,8 @@ function saveEditedTrip() {
 
 
     if (
-        new Date(endDate) <
+        new Date(endDate)
+        <
         new Date(startDate)
     ) {
 
@@ -1597,10 +2407,6 @@ function saveEditedTrip() {
 
     }
 
-
-    /* =====================================
-       GET TRIPS
-    ===================================== */
 
     const trips =
         getTrips();
@@ -1621,10 +2427,6 @@ function saveEditedTrip() {
     }
 
 
-    /* =====================================
-       UPDATE DATES
-    ===================================== */
-
     trip.startDate =
         startDate;
 
@@ -1634,15 +2436,18 @@ function saveEditedTrip() {
 
 
     /*
-       Save the updated trip
+       IMPORTANT:
+
+       We don't delete the stops.
+
+       The itinerary stays saved.
     */
 
-    saveTrips(trips);
 
+    saveTrips(
+        trips
+    );
 
-    /* =====================================
-       CLOSE MODAL
-    ===================================== */
 
     closeEditModal();
 
@@ -1651,11 +2456,7 @@ function saveEditedTrip() {
         null;
 
 
-    /* =====================================
-       REFRESH DISPLAY
-    ===================================== */
-
-    loadTrip();
+    loadTrips();
 
 
     alert(
@@ -1666,9 +2467,9 @@ function saveEditedTrip() {
 
 
 
-/* =========================================
+/* =====================================================
    CLOSE EDIT MODAL
-========================================= */
+===================================================== */
 
 function closeEditModal() {
 
@@ -1686,9 +2487,9 @@ function closeEditModal() {
 
 
 
-/* =========================================
+/* =====================================================
    DELETE TRIP
-========================================= */
+===================================================== */
 
 function deleteTrip(index) {
 
@@ -1711,13 +2512,9 @@ function deleteTrip(index) {
     }
 
 
-    /* =====================================
-       CONFIRM DELETE
-    ===================================== */
-
     const confirmDelete =
         confirm(
-            "Are you sure you want to delete this trip?"
+            "Are you sure you want to delete this entire trip and its itinerary?"
         );
 
 
@@ -1728,46 +2525,52 @@ function deleteTrip(index) {
     }
 
 
-    /* =====================================
-       REMOVE TRIP
-    ===================================== */
-
     trips.splice(
         index,
         1
     );
 
 
-    /* =====================================
-       SAVE UPDATED TRIPS
-    ===================================== */
-
     saveTrips(
         trips
     );
 
 
-    /* =====================================
-       REFRESH PAGE
-    ===================================== */
-
-    loadTrip();
+    loadTrips();
 
 }
 
 
 
-/* =========================================
+/* =====================================================
    FORMAT DATE
-========================================= */
+===================================================== */
 
-function formatDate(
-    dateString
-) {
+function formatDate(dateString) {
 
     if (!dateString) {
 
         return "Not specified";
+
+    }
+
+
+    /*
+       If date is already formatted text,
+       don't attempt to parse it.
+    */
+
+    if (
+        typeof dateString !== "string"
+        ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(
+            dateString
+        )
+    ) {
+
+        return String(
+            dateString
+        );
 
     }
 
@@ -1792,9 +2595,9 @@ function formatDate(
 
 
 
-/* =========================================
-   CALCULATE DURATION
-========================================= */
+/* =====================================================
+   CALCULATE DAYS
+===================================================== */
 
 function calculateDays(
     startDate,
@@ -1830,19 +2633,25 @@ function calculateDays(
 
 
     return (
+
         Math.floor(
             difference /
             (1000 * 60 * 60 * 24)
-        ) + 1
+        )
+
+        +
+
+        1
+
     );
 
 }
 
 
 
-/* =========================================
+/* =====================================================
    ESCAPE HTML
-========================================= */
+===================================================== */
 
 function escapeHTML(value) {
 
@@ -1853,7 +2662,12 @@ function escapeHTML(value) {
 
 
     div.textContent =
-        value || "";
+        value === undefined ||
+        value === null
+
+            ? ""
+
+            : String(value);
 
 
     return div.innerHTML;
@@ -1862,11 +2676,26 @@ function escapeHTML(value) {
 
 
 
-/* =========================================
-   ADD ANOTHER TRIP
-========================================= */
+/* =====================================================
+   CREATE NEW TRIP
+===================================================== */
 
 function addAnotherTrip() {
+
+    /*
+       Go to your trip planner.
+
+       The planner should then collect:
+
+       1. Destination
+       2. Trip dates
+       3. Add Stop
+       4. City
+       5. Stop dates
+       6. Activities
+       7. Reorder stops
+       8. Save Itinerary
+    */
 
     window.location.href =
         "index.html";
@@ -1875,9 +2704,9 @@ function addAnotherTrip() {
 
 
 
-/* =========================================
+/* =====================================================
    CLOSE MODALS WHEN CLICKING OUTSIDE
-========================================= */
+===================================================== */
 
 window.addEventListener(
     "click",
@@ -1919,15 +2748,38 @@ window.addEventListener(
 
 
 
-/* =========================================
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeViewModal();
+
+            closeEditModal();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
    LOAD PAGE
-========================================= */
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-        loadTrip();
+        loadTrips();
 
     }
 );

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GlobeTrotter | Itinerary Builder</title>
+
+    <link
+        rel="stylesheet"
+        href="index.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           ITINERARY BUILDER
+        ===================================================== */
+
+        .itinerary-builder-page {
+
+            padding-top: 50px;
+            padding-bottom: 80px;
+
+        }
+
+
+        .itinerary-builder-page .section-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .itinerary-builder-page .section-header h1 {
+
+            margin: 8px 0;
+
+            font-size: 38px;
+
+        }
+
+
+        .itinerary-builder-page .section-header p {
+
+            margin: 0;
+
+            color: #777;
+
+        }
+
+
+        /* =====================================================
+           TRIP SUMMARY
+        ===================================================== */
+
+        .itinerary-summary {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.07
+                );
+
+        }
+
+
+        .summary-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f2f6ff;
+
+            font-size: 28px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .itinerary-summary h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 24px;
+
+        }
+
+
+        .itinerary-summary p {
+
+            margin: 4px 0;
+
+            color: #777;
+
+        }
+
+
+        /* =====================================================
+           VIEW TOGGLE
+        ===================================================== */
+
+        .view-toggle-wrapper {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .view-toggle {
+
+            display: inline-flex;
+
+            background: #f3f3f3;
+
+            padding: 5px;
+
+            border-radius: 12px;
+
+            gap: 4px;
+
+        }
+
+
+        .view-toggle button {
+
+            border: none;
+
+            background: transparent;
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .view-toggle button.active {
+
+            background: #ffffff;
+
+            box-shadow:
+                0 3px 10px rgba(
+                    0,
+                    0,
+                    0,
+                    0.10
+                );
+
+        }
+
+
+        /* =====================================================
+           STOP CARD
+        ===================================================== */
+
+        .itinerary-stop {
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 8px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.07
+                );
+
+            border: 1px solid #eeeeee;
+
+        }
+
+
+        .stop-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .stop-number {
+
+            display: inline-block;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: #777;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .stop-header h2 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+        }
+
+
+        .stop-controls {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+
+        .stop-controls button {
+
+            width: 40px;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            background: #f2f2f2;
+
+            font-size: 18px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .stop-controls button:hover {
+
+            transform: translateY(-2px);
+
+            background: #e7e7e7;
+
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .itinerary-stop .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap: 20px;
+
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .input-group.full {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        .input-group label {
+
+            font-weight: 600;
+
+        }
+
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 13px 15px;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            font-family: inherit;
+
+            outline: none;
+
+        }
+
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+
+            border-color: #888;
+
+        }
+
+
+        .input-group textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+
+        }
+
+
+        .input-group small {
+
+            color: #888;
+
+        }
+
+
+        /* =====================================================
+           ACTIVITIES BUILDER
+        ===================================================== */
+
+        .activities-section {
+
+            grid-column: 1 / -1;
+
+            margin-top: 5px;
+
+        }
+
+
+        .activities-title {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .activities-title h3 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .activity-builder {
+
+            border: 1px solid #e5e5e5;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            background: #fafafa;
+
+        }
+
+
+        .activity-form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr
+                1fr
+                1fr
+                auto;
+
+            gap: 12px;
+
+            align-items: end;
+
+        }
+
+
+        .activity-form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+        }
+
+
+        .activity-form-group label {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .activity-form-group input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 11px 12px;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            outline: none;
+
+        }
+
+
+        .remove-activity-btn {
+
+            height: 40px;
+
+            padding: 0 13px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #f1f1f1;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+
+        .remove-activity-btn:hover {
+
+            background: #e5e5e5;
+
+        }
+
+
+        .add-activity-btn {
+
+            border: 1px dashed #bbb;
+
+            background: #ffffff;
+
+            padding: 10px 15px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .add-activity-btn:hover {
+
+            background: #f5f5f5;
+
+        }
+
+
+        /* =====================================================
+           ACTIVITY PREVIEW
+        ===================================================== */
+
+        .activities-preview {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .activities-preview .activity {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 13px 15px;
+
+            border-radius: 10px;
+
+            background: #f5f5f5;
+
+            font-size: 14px;
+
+        }
+
+
+        .activity-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .activity-name {
+
+            font-weight: 600;
+
+        }
+
+
+        .activity-meta {
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        .activity-cost {
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           CALENDAR VIEW
+        ===================================================== */
+
+        .calendar-view {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+        .calendar-day {
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            border: 1px solid #eeeeee;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 22px rgba(
+                    0,
+                    0,
+                    0,
+                    0.05
+                );
+
+        }
+
+
+        .calendar-day-header {
+
+            padding: 17px 20px;
+
+            background: #f7f7f7;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .calendar-day-header h3 {
+
+            margin: 0;
+
+            font-size: 19px;
+
+        }
+
+
+        .calendar-city {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .calendar-activities {
+
+            padding: 15px 20px;
+
+        }
+
+
+        .calendar-activity {
+
+            display: grid;
+
+            grid-template-columns:
+                90px
+                1fr
+                auto;
+
+            gap: 15px;
+
+            align-items: center;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eeeeee;
+
+        }
+
+
+        .calendar-activity:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .calendar-time {
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+        }
+
+
+        .calendar-activity-name {
+
+            font-weight: 600;
+
+        }
+
+
+        .calendar-cost {
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
+
+        .itinerary-actions {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 15px;
+
+            margin-top: 35px;
+
+        }
+
+
+        .secondary-btn {
+
+            border: 1px solid #dddddd;
+
+            background: #ffffff;
+
+            padding: 13px 22px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+
+        .secondary-btn:hover {
+
+            background: #f5f5f5;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 700px
+        ) {
+
+            .itinerary-builder-page .section-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .itinerary-stop .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .input-group.full {
+
+                grid-column: auto;
+
+            }
+
+
+            .stop-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .itinerary-actions {
+
+                flex-direction: column;
+
+            }
+
+
+            .activity-form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .calendar-activity {
+
+                grid-template-columns: 1fr;
+
+                gap: 5px;
+
+            }
+
+
+            .calendar-day-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        Globe<span>Trotter</span>
+
+        <span class="plane">
+            ✈
+        </span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Explore
+        </a>
+
+
+        <a href="trips.html">
+            My Trips
+        </a>
+
+
+        <a href="index.html#destinations">
+            Destinations
+        </a>
+
+
+        <a
+            href="itinerary.html"
+            class="active"
+        >
+            Itinerary
+        </a>
+
+    </div>
+
+
+    <div class="user-section">
+
+        <span id="userName">
+            Siddhi
+        </span>
+
+
+        <div class="user-avatar">
+            S
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container">
+
+
+    <section class="itinerary-builder-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="hero-small">
+                    ITINERARY BUILDER
+                </span>
+
+
+                <h1 id="itineraryTitle">
+                    Your Trip
+                </h1>
+
+
+                <p id="itinerarySubtitle">
+                    Build your complete day-wise itinerary.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="addStop()"
+            >
+
+                + Add Stop
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TRIP INFORMATION
+        ================================================== -->
+
+        <div
+            id="tripInformation"
+            class="itinerary-summary"
+        >
+
+        </div>
+
+
+
+        <!-- =================================================
+             VIEW MODE TOGGLE
+        ================================================== -->
+
+        <div class="view-toggle-wrapper">
+
+            <div class="view-toggle">
+
+                <button
+                    id="listViewButton"
+                    class="active"
+                    type="button"
+                    onclick="setItineraryView('list')"
+                >
+                    ☰ List
+                </button>
+
+
+                <button
+                    id="calendarViewButton"
+                    type="button"
+                    onclick="setItineraryView('calendar')"
+                >
+                    ▣ Calendar
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STOPS
+        ================================================== -->
+
+        <div id="stopsContainer">
+
+        </div>
+
+
+
+        <!-- =================================================
+             CALENDAR
+        ================================================== -->
+
+        <div
+            id="calendarContainer"
+            class="calendar-view"
+            style="display:none;"
+        >
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================== -->
+
+        <div class="itinerary-actions">
+
+            <button
+                class="primary-btn"
+                onclick="saveItinerary()"
+            >
+
+                Save Itinerary
+
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="window.location.href='trips.html'"
+            >
+
+                Back to My Trips
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="toast"
+>
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

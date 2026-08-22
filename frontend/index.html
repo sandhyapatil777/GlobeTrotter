@@ -17,13 +17,357 @@
         href="index.css"
     >
 
+    <style>
+
+        /* =====================================================
+           ITINERARY BUILDER
+        ===================================================== */
+
+        .itinerary-builder {
+            margin-top: 25px;
+            border-top: 1px solid #eeeeee;
+            padding-top: 25px;
+        }
+
+
+        .itinerary-builder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .itinerary-builder-header h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #222;
+        }
+
+
+        .itinerary-builder-header p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           ADD STOP BUTTON
+        ===================================================== */
+
+        .add-stop-btn {
+            border: none;
+            background: #4263eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+
+        .add-stop-btn:hover {
+            background: #304fc4;
+        }
+
+
+        /* =====================================================
+           STOP CARD
+        ===================================================== */
+
+        .stop-card {
+            background: #f8f9fb;
+            border: 1px solid #e4e4e4;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+
+        .stop-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+
+
+        .stop-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .stop-number {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: #4263eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+
+        .stop-title h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #222;
+        }
+
+
+        .remove-stop-btn {
+            border: none;
+            background: #fff0f0;
+            color: #d63031;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+
+        .remove-stop-btn:hover {
+            background: #d63031;
+            color: white;
+        }
+
+
+        /* =====================================================
+           STOP FORM
+        ===================================================== */
+
+        .stop-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+
+        .stop-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .stop-input-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .stop-input-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 7px;
+        }
+
+
+        .stop-input-group input,
+        .stop-input-group select,
+        .stop-input-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px;
+            border: 1px solid #d9d9d9;
+            border-radius: 9px;
+            font-size: 14px;
+            background: white;
+        }
+
+
+        .stop-input-group textarea {
+            min-height: 75px;
+            resize: vertical;
+        }
+
+
+        /* =====================================================
+           ACTIVITIES
+        ===================================================== */
+
+        .activities-section {
+            margin-top: 18px;
+            background: white;
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+
+        .activities-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        .activities-header strong {
+            font-size: 14px;
+        }
+
+
+        .add-activity-btn {
+            border: none;
+            background: #eef3ff;
+            color: #4263eb;
+            padding: 7px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        .activity-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+
+        .activity-row input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+
+        .remove-activity-btn {
+            border: none;
+            background: #fff0f0;
+            color: #d63031;
+            border-radius: 8px;
+            padding: 0 12px;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           REORDER BUTTONS
+        ===================================================== */
+
+        .reorder-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+
+        .reorder-btn {
+            border: none;
+            background: #eef3ff;
+            color: #4263eb;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+
+        .reorder-btn:hover {
+            background: #4263eb;
+            color: white;
+        }
+
+
+        /* =====================================================
+           SAVE ITINERARY
+        ===================================================== */
+
+        .save-itinerary-btn {
+            width: 100%;
+            border: none;
+            background: #198754;
+            color: white;
+            padding: 15px;
+            border-radius: 11px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+
+        .save-itinerary-btn:hover {
+            background: #157347;
+        }
+
+
+        /* =====================================================
+           EMPTY STOPS
+        ===================================================== */
+
+        .no-stops-message {
+            text-align: center;
+            padding: 25px 15px;
+            border: 1px dashed #ccc;
+            border-radius: 12px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+
+        /* =====================================================
+           MODAL SIZE
+        ===================================================== */
+
+        .itinerary-modal-content {
+            max-width: 850px !important;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .stop-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stop-input-group.full {
+                grid-column: auto;
+            }
+
+            .itinerary-builder-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .add-stop-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav class="navbar">
 
@@ -31,14 +375,14 @@
 
         Globe<span>Trotter</span>
 
-        <span class="plane">✈</span>
+        <span class="plane">
+            ✈
+        </span>
 
     </div>
 
 
     <div class="nav-links">
-
-        <!-- EXPLORE -->
 
         <a
             href="index.html"
@@ -48,21 +392,15 @@
         </a>
 
 
-        <!-- MY TRIPS -->
-
         <a href="trips.html">
             My Trips
         </a>
 
 
-        <!-- DESTINATIONS -->
-
         <a href="index.html#destinations">
             Destinations
         </a>
 
-
-        <!-- ITINERARY -->
 
         <a href="index.html#itinerary">
             Itinerary
@@ -87,7 +425,9 @@
 
 
 
-<!-- ================= HERO SECTION ================= -->
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
 
 <section class="hero">
 
@@ -123,7 +463,9 @@
 
 
 
-<!-- ================= CREATE TRIP ================= -->
+<!-- =====================================================
+     CREATE TRIP
+===================================================== -->
 
 <main class="container">
 
@@ -161,191 +503,193 @@
 
 
 
-    <!-- ================= DESTINATIONS ================= -->
+<!-- =====================================================
+     DESTINATIONS
+===================================================== -->
 
-    <section id="destinations">
+<section id="destinations">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Popular Destinations
+            </h2>
+
+            <p>
+                Get inspired for your next adventure.
+            </p>
+
+        </div>
+
+    </div>
 
 
-        <div class="section-header">
+    <div class="destination-grid">
 
-            <div>
 
-                <h2>
-                    Popular Destinations
-                </h2>
+        <!-- PARIS -->
+
+        <div
+            class="destination-card"
+            onclick="selectDestination('Paris, France')"
+        >
+
+            <div
+                class="destination-image paris"
+            >
+
+                <span class="destination-tag">
+                    Romantic
+                </span>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h3>
+                    Paris
+                </h3>
 
                 <p>
-                    Get inspired for your next adventure.
+                    🇫🇷 France · Europe
                 </p>
 
+
+                <div class="card-bottom">
+
+                    <span>
+                        4–7 days
+                    </span>
+
+                    <strong>
+                        From ₹75k
+                    </strong>
+
+                </div>
+
             </div>
 
         </div>
 
 
 
-        <div class="destination-grid">
+        <!-- BALI -->
 
-
-            <!-- ================= PARIS ================= -->
+        <div
+            class="destination-card"
+            onclick="selectDestination('Bali, Indonesia')"
+        >
 
             <div
-                class="destination-card"
-                onclick="selectDestination('Paris, France')"
+                class="destination-image bali"
             >
 
-                <div
-                    class="destination-image paris"
-                >
-
-                    <span class="destination-tag">
-                        Romantic
-                    </span>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h3>
-                        Paris
-                    </h3>
-
-                    <p>
-                        🇫🇷 France · Europe
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <span>
-                            4–7 days
-                        </span>
-
-                        <strong>
-                            From ₹75k
-                        </strong>
-
-                    </div>
-
-                </div>
+                <span class="destination-tag">
+                    Beach
+                </span>
 
             </div>
 
 
+            <div class="card-content">
 
-            <!-- ================= BALI ================= -->
+                <h3>
+                    Bali
+                </h3>
 
-            <div
-                class="destination-card"
-                onclick="selectDestination('Bali, Indonesia')"
-            >
+                <p>
+                    🇮🇩 Indonesia · Asia
+                </p>
 
-                <div
-                    class="destination-image bali"
-                >
 
-                    <span class="destination-tag">
-                        Beach
+                <div class="card-bottom">
+
+                    <span>
+                        5–8 days
                     </span>
 
-                </div>
-
-
-                <div class="card-content">
-
-                    <h3>
-                        Bali
-                    </h3>
-
-                    <p>
-                        🇮🇩 Indonesia · Asia
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <span>
-                            5–8 days
-                        </span>
-
-                        <strong>
-                            From ₹45k
-                        </strong>
-
-                    </div>
+                    <strong>
+                        From ₹45k
+                    </strong>
 
                 </div>
 
             </div>
-
-
-
-            <!-- ================= TOKYO ================= -->
-
-            <div
-                class="destination-card"
-                onclick="selectDestination('Tokyo, Japan')"
-            >
-
-                <div
-                    class="destination-image tokyo"
-                >
-
-                    <span class="destination-tag">
-                        Culture
-                    </span>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h3>
-                        Tokyo
-                    </h3>
-
-                    <p>
-                        🇯🇵 Japan · Asia
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <span>
-                            6–9 days
-                        </span>
-
-                        <strong>
-                            From ₹90k
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
 
         </div>
 
-    </section>
+
+
+        <!-- TOKYO -->
+
+        <div
+            class="destination-card"
+            onclick="selectDestination('Tokyo, Japan')"
+        >
+
+            <div
+                class="destination-image tokyo"
+            >
+
+                <span class="destination-tag">
+                    Culture
+                </span>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h3>
+                    Tokyo
+                </h3>
+
+                <p>
+                    🇯🇵 Japan · Asia
+                </p>
+
+
+                <div class="card-bottom">
+
+                    <span>
+                        6–9 days
+                    </span>
+
+                    <strong>
+                        From ₹90k
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 </main>
 
 
 
-<!-- ================= CUSTOM TRIP MODAL ================= -->
+<!-- =====================================================
+     CUSTOM TRIP MODAL
+===================================================== -->
 
 <div
     id="customModal"
     class="modal"
 >
 
-    <div class="modal-content">
+    <div class="modal-content itinerary-modal-content">
 
 
-        <!-- MODAL HEADER -->
+        <!-- HEADER -->
 
         <div class="modal-header">
 
@@ -356,7 +700,7 @@
                 </h2>
 
                 <p>
-                    Tell us about your dream trip.
+                    First enter your trip information.
                 </p>
 
             </div>
@@ -375,7 +719,9 @@
 
 
 
-        <!-- ================= FORM ================= -->
+        <!-- =================================================
+             BASIC TRIP INFORMATION
+        ================================================= -->
 
         <div class="form-grid">
 
@@ -507,16 +853,81 @@
 
 
 
-        <!-- GENERATE BUTTON -->
+        <!-- =================================================
+             ITINERARY BUILDER
+        ================================================= -->
 
-        <button
-            class="primary-btn full-btn"
-            onclick="generateCustomTrip()"
+        <div
+            id="itineraryBuilder"
+            class="itinerary-builder"
         >
 
-            Generate Trip →
 
-        </button>
+            <div class="itinerary-builder-header">
+
+                <div>
+
+                    <h3>
+                        🗺️ Build Your Itinerary
+                    </h3>
+
+                    <p>
+                        Add cities, travel dates and activities.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-stop-btn"
+                    onclick="addStop()"
+                >
+
+                    + Add Stop
+
+                </button>
+
+            </div>
+
+
+
+            <!-- STOPS WILL APPEAR HERE -->
+
+            <div
+                id="stopsContainer"
+            >
+
+                <div class="no-stops-message">
+
+                    No stops added yet.
+
+                    <br>
+
+                    Click
+                    <strong>+ Add Stop</strong>
+                    to add your first city.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SAVE ITINERARY -->
+
+            <button
+                type="button"
+                class="save-itinerary-btn"
+                onclick="saveItinerary()"
+            >
+
+                💾 Save Itinerary
+
+            </button>
+
+
+        </div>
 
 
     </div>
@@ -525,7 +936,9 @@
 
 
 
-<!-- ================= TOAST ================= -->
+<!-- =====================================================
+     TOAST
+===================================================== -->
 
 <div
     id="toast"
@@ -535,9 +948,1206 @@
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-<script src="script.js"></script>
+<script>
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const TRIP_STORAGE_KEY = "globeTrotterTrips";
+
+let currentStops = [];
+
+
+
+/* =====================================================
+   OPEN CUSTOM TRIP
+===================================================== */
+
+function openCustomTrip() {
+
+    document
+        .getElementById("customModal")
+        .classList.add("show");
+
+}
+
+
+
+/* =====================================================
+   CLOSE CUSTOM TRIP
+===================================================== */
+
+function closeCustomTrip() {
+
+    document
+        .getElementById("customModal")
+        .classList.remove("show");
+
+}
+
+
+
+/* =====================================================
+   SELECT DESTINATION
+===================================================== */
+
+function selectDestination(destination) {
+
+    openCustomTrip();
+
+    document
+        .getElementById("customDestination")
+        .value = destination;
+
+}
+
+
+
+/* =====================================================
+   ADD STOP
+===================================================== */
+
+function addStop() {
+
+    currentStops.push({
+
+        id:
+            Date.now() +
+            Math.random(),
+
+        city: "",
+
+        startDate: "",
+
+        endDate: "",
+
+        activities: []
+
+    });
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   REMOVE STOP
+===================================================== */
+
+function removeStop(index) {
+
+    currentStops.splice(
+        index,
+        1
+    );
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   MOVE STOP UP
+===================================================== */
+
+function moveStopUp(index) {
+
+    if (index <= 0) {
+
+        return;
+
+    }
+
+
+    const temp =
+        currentStops[index];
+
+
+    currentStops[index] =
+        currentStops[index - 1];
+
+
+    currentStops[index - 1] =
+        temp;
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   MOVE STOP DOWN
+===================================================== */
+
+function moveStopDown(index) {
+
+    if (
+        index >=
+        currentStops.length - 1
+    ) {
+
+        return;
+
+    }
+
+
+    const temp =
+        currentStops[index];
+
+
+    currentStops[index] =
+        currentStops[index + 1];
+
+
+    currentStops[index + 1] =
+        temp;
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   RENDER STOPS
+===================================================== */
+
+function renderStops() {
+
+    const container =
+        document.getElementById(
+            "stopsContainer"
+        );
+
+
+    if (
+        currentStops.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="no-stops-message">
+
+                No stops added yet.
+
+                <br>
+
+                Click
+                <strong>+ Add Stop</strong>
+                to add your first city.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    currentStops.forEach(
+        function(stop, index) {
+
+            const stopCard =
+                document.createElement(
+                    "div"
+                );
+
+
+            stopCard.className =
+                "stop-card";
+
+
+            stopCard.innerHTML = `
+
+                <div class="stop-card-header">
+
+                    <div class="stop-title">
+
+                        <div class="stop-number">
+
+                            ${index + 1}
+
+                        </div>
+
+
+                        <h4>
+
+                            Stop ${index + 1}
+
+                        </h4>
+
+                    </div>
+
+
+                    <div style="
+                        display:flex;
+                        gap:6px;
+                        align-items:center;
+                    ">
+
+                        <div class="reorder-buttons">
+
+                            <button
+                                type="button"
+                                class="reorder-btn"
+                                onclick="moveStopUp(${index})"
+                                title="Move up"
+                            >
+                                ↑
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="reorder-btn"
+                                onclick="moveStopDown(${index})"
+                                title="Move down"
+                            >
+                                ↓
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-stop-btn"
+                            onclick="removeStop(${index})"
+                        >
+
+                            Remove
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stop-form-grid">
+
+
+                    <!-- CITY -->
+
+                    <div class="stop-input-group full">
+
+                        <label>
+                            City / Stop
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="e.g. Paris"
+                            value="${escapeAttribute(
+                                stop.city
+                            )}"
+                            onchange="updateStopCity(${index}, this.value)"
+                        >
+
+                    </div>
+
+
+
+                    <!-- START DATE -->
+
+                    <div class="stop-input-group">
+
+                        <label>
+                            Arrival / Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            value="${escapeAttribute(
+                                stop.startDate
+                            )}"
+                            onchange="updateStopStartDate(${index}, this.value)"
+                        >
+
+                    </div>
+
+
+
+                    <!-- END DATE -->
+
+                    <div class="stop-input-group">
+
+                        <label>
+                            Departure / End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            value="${escapeAttribute(
+                                stop.endDate
+                            )}"
+                            onchange="updateStopEndDate(${index}, this.value)"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ACTIVITIES -->
+
+                <div class="activities-section">
+
+                    <div class="activities-header">
+
+                        <strong>
+                            🎯 Activities
+                        </strong>
+
+
+                        <button
+                            type="button"
+                            class="add-activity-btn"
+                            onclick="addActivity(${index})"
+                        >
+
+                            + Add Activity
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="activities-${index}"
+                    >
+
+                        ${renderActivities(
+                            stop,
+                            index
+                        )}
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                stopCard
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   UPDATE CITY
+===================================================== */
+
+function updateStopCity(
+    index,
+    value
+) {
+
+    if (
+        currentStops[index]
+    ) {
+
+        currentStops[index].city =
+            value;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE START DATE
+===================================================== */
+
+function updateStopStartDate(
+    index,
+    value
+) {
+
+    if (
+        currentStops[index]
+    ) {
+
+        currentStops[index].startDate =
+            value;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE END DATE
+===================================================== */
+
+function updateStopEndDate(
+    index,
+    value
+) {
+
+    if (
+        currentStops[index]
+    ) {
+
+        currentStops[index].endDate =
+            value;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ADD ACTIVITY
+===================================================== */
+
+function addActivity(
+    stopIndex
+) {
+
+    if (
+        !currentStops[stopIndex]
+    ) {
+
+        return;
+
+    }
+
+
+    currentStops[
+        stopIndex
+    ].activities.push("");
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   REMOVE ACTIVITY
+===================================================== */
+
+function removeActivity(
+    stopIndex,
+    activityIndex
+) {
+
+    if (
+        !currentStops[stopIndex]
+    ) {
+
+        return;
+
+    }
+
+
+    currentStops[
+        stopIndex
+    ].activities.splice(
+        activityIndex,
+        1
+    );
+
+
+    renderStops();
+
+}
+
+
+
+/* =====================================================
+   UPDATE ACTIVITY
+===================================================== */
+
+function updateActivity(
+    stopIndex,
+    activityIndex,
+    value
+) {
+
+    if (
+        !currentStops[stopIndex]
+    ) {
+
+        return;
+
+    }
+
+
+    currentStops[
+        stopIndex
+    ].activities[
+        activityIndex
+    ] = value;
+
+}
+
+
+
+/* =====================================================
+   RENDER ACTIVITIES
+===================================================== */
+
+function renderActivities(
+    stop,
+    stopIndex
+) {
+
+    if (
+        !stop.activities ||
+        stop.activities.length === 0
+    ) {
+
+        return `
+
+            <div style="
+                color:#999;
+                font-size:13px;
+            ">
+
+                No activities added yet.
+
+                Click
+                <strong>+ Add Activity</strong>
+                to add one.
+
+            </div>
+
+        `;
+
+    }
+
+
+    return stop.activities
+        .map(
+            function(activity, activityIndex) {
+
+                return `
+
+                    <div class="activity-row">
+
+                        <input
+                            type="text"
+                            placeholder="e.g. Visit Eiffel Tower"
+                            value="${escapeAttribute(
+                                activity
+                            )}"
+                            onchange="
+                                updateActivity(
+                                    ${stopIndex},
+                                    ${activityIndex},
+                                    this.value
+                                )
+                            "
+                        >
+
+
+                        <button
+                            type="button"
+                            class="remove-activity-btn"
+                            onclick="
+                                removeActivity(
+                                    ${stopIndex},
+                                    ${activityIndex}
+                                )
+                            "
+                        >
+
+                            ×
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+
+/* =====================================================
+   SAVE ITINERARY
+===================================================== */
+
+function saveItinerary() {
+
+    /* =================================================
+       GET BASIC TRIP INFORMATION
+    ================================================= */
+
+    const destination =
+        document
+            .getElementById(
+                "customDestination"
+            )
+            .value
+            .trim();
+
+
+    const travelStyle =
+        document
+            .getElementById(
+                "travelStyle"
+            )
+            .value;
+
+
+    const startDate =
+        document
+            .getElementById(
+                "customStart"
+            )
+            .value;
+
+
+    const endDate =
+        document
+            .getElementById(
+                "customEnd"
+            )
+            .value;
+
+
+    const budget =
+        document
+            .getElementById(
+                "customBudget"
+            )
+            .value;
+
+
+    const interests =
+        document
+            .getElementById(
+                "interests"
+            )
+            .value
+            .trim();
+
+
+
+    /* =================================================
+       VALIDATION
+    ================================================= */
+
+    if (!destination) {
+
+        showToast(
+            "Please enter a destination."
+        );
+
+        return;
+
+    }
+
+
+    if (!startDate) {
+
+        showToast(
+            "Please select the trip start date."
+        );
+
+        return;
+
+    }
+
+
+    if (!endDate) {
+
+        showToast(
+            "Please select the trip end date."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        new Date(endDate) <
+        new Date(startDate)
+    ) {
+
+        showToast(
+            "End date cannot be before start date."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        currentStops.length === 0
+    ) {
+
+        showToast(
+            "Please add at least one stop."
+        );
+
+        return;
+
+    }
+
+
+
+    /* =================================================
+       VALIDATE STOPS
+    ================================================= */
+
+    for (
+        let i = 0;
+        i < currentStops.length;
+        i++
+    ) {
+
+        const stop =
+            currentStops[i];
+
+
+        if (
+            !stop.city ||
+            !stop.city.trim()
+        ) {
+
+            showToast(
+                "Please enter a city for Stop " +
+                (i + 1) +
+                "."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !stop.startDate
+        ) {
+
+            showToast(
+                "Please select the start date for " +
+                stop.city +
+                "."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !stop.endDate
+        ) {
+
+            showToast(
+                "Please select the end date for " +
+                stop.city +
+                "."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            new Date(
+                stop.endDate
+            ) <
+            new Date(
+                stop.startDate
+            )
+        ) {
+
+            showToast(
+                "End date cannot be before start date for " +
+                stop.city +
+                "."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       CLEAN ACTIVITIES
+    ================================================= */
+
+    const cleanedStops =
+        currentStops.map(
+            function(stop) {
+
+                return {
+
+                    city:
+                        stop.city.trim(),
+
+                    startDate:
+                        stop.startDate,
+
+                    endDate:
+                        stop.endDate,
+
+                    activities:
+                        (stop.activities || [])
+                            .map(
+                                function(activity) {
+
+                                    return String(
+                                        activity
+                                    ).trim();
+
+                                }
+                            )
+                            .filter(
+                                function(activity) {
+
+                                    return activity.length > 0;
+
+                                }
+                            )
+
+                };
+
+            }
+        );
+
+
+
+    /* =================================================
+       CREATE TRIP OBJECT
+    ================================================= */
+
+    const newTrip = {
+
+        id:
+            Date.now().toString(),
+
+        destination:
+            destination,
+
+        tripType:
+            travelStyle,
+
+        travelStyle:
+            travelStyle,
+
+        startDate:
+            startDate,
+
+        endDate:
+            endDate,
+
+        budget:
+            budget || 0,
+
+        interests:
+            interests,
+
+        stops:
+            cleanedStops,
+
+        itinerary:
+            cleanedStops,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+
+    /* =================================================
+       GET EXISTING TRIPS
+    ================================================= */
+
+    let trips = [];
+
+
+    const saved =
+        localStorage.getItem(
+            TRIP_STORAGE_KEY
+        );
+
+
+    if (saved) {
+
+        try {
+
+            const parsed =
+                JSON.parse(saved);
+
+
+            if (
+                Array.isArray(parsed)
+            ) {
+
+                trips = parsed;
+
+            }
+
+            else if (parsed) {
+
+                trips = [
+                    parsed
+                ];
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Could not read saved trips:",
+                error
+            );
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       ADD NEW TRIP
+    ================================================= */
+
+    trips.push(
+        newTrip
+    );
+
+
+
+    /* =================================================
+       SAVE TO LOCAL STORAGE
+    ================================================= */
+
+    localStorage.setItem(
+
+        TRIP_STORAGE_KEY,
+
+        JSON.stringify(
+            trips
+        )
+
+    );
+
+
+
+    /* =================================================
+       ALSO UPDATE OLD KEY
+       FOR COMPATIBILITY
+    ================================================= */
+
+    localStorage.setItem(
+
+        "globeTrotterTrip",
+
+        JSON.stringify(
+            trips
+        )
+
+    );
+
+
+
+    /* =================================================
+       SUCCESS
+    ================================================= */
+
+    showToast(
+        "Itinerary saved successfully!"
+    );
+
+
+    setTimeout(
+        function() {
+
+            window.location.href =
+                "trips.html";
+
+        },
+        800
+    );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE ATTRIBUTE
+===================================================== */
+
+function escapeAttribute(
+    value
+) {
+
+    if (
+        value === undefined ||
+        value === null
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        );
+
+}
+
+
+
+/* =====================================================
+   SHOW TOAST
+===================================================== */
+
+function showToast(
+    message
+) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    if (!toast) {
+
+        alert(message);
+
+        return;
+
+    }
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "customModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeCustomTrip();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeCustomTrip();
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>

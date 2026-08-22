@@ -1,6 +1,19 @@
 /* =========================================================
    GLOBETROTTER - COMPLETE JAVASCRIPT
-   Authentication + Trip Planner + My Trips
+
+   AUTHENTICATION
+   TRIP CREATION
+   ITINERARY BUILDER
+   ADD STOPS
+   CITY + DATES
+   ACTIVITIES
+   ACTIVITY TIME
+   ACTIVITY COST
+   REORDER STOPS
+   SAVE ITINERARY
+   MY TRIPS
+   VIEW COMPLETE ITINERARY
+   LIST / CALENDAR VIEW
 ========================================================= */
 
 
@@ -83,7 +96,6 @@ function clearMessages() {
 
         });
 
-
     document
         .querySelectorAll(".error")
         .forEach(element => {
@@ -91,7 +103,6 @@ function clearMessages() {
             element.textContent = "";
 
         });
-
 
     document
         .querySelectorAll("input")
@@ -116,11 +127,9 @@ function setError(inputId, errorId, message) {
     const error =
         document.getElementById(errorId);
 
-
     if (input) {
         input.classList.add("invalid");
     }
-
 
     if (error) {
         error.textContent = message;
@@ -137,11 +146,9 @@ function clearError(inputId, errorId) {
     const error =
         document.getElementById(errorId);
 
-
     if (input) {
         input.classList.remove("invalid");
     }
-
 
     if (error) {
         error.textContent = "";
@@ -184,10 +191,10 @@ function togglePassword(id, button) {
         return;
     }
 
-
     if (input.type === "password") {
 
         input.type = "text";
+
         button.textContent = "Hide";
 
     }
@@ -195,6 +202,7 @@ function togglePassword(id, button) {
     else {
 
         input.type = "password";
+
         button.textContent = "Show";
 
     }
@@ -218,22 +226,18 @@ if (loginForm) {
 
             event.preventDefault();
 
-
             const identity =
                 document
                     .getElementById("loginIdentity")
                     .value
                     .trim();
 
-
             const password =
                 document
                     .getElementById("loginPassword")
                     .value;
 
-
             let valid = true;
-
 
             if (!identity) {
 
@@ -256,7 +260,6 @@ if (loginForm) {
 
             }
 
-
             if (!password) {
 
                 setError(
@@ -278,17 +281,14 @@ if (loginForm) {
 
             }
 
-
             if (!valid) {
                 return;
             }
-
 
             const savedUser =
                 localStorage.getItem(
                     "globetrotterUser"
                 );
-
 
             if (!savedUser) {
 
@@ -301,7 +301,6 @@ if (loginForm) {
                 return;
 
             }
-
 
             let user;
 
@@ -323,7 +322,6 @@ if (loginForm) {
                 return;
 
             }
-
 
             const identityMatches =
 
@@ -348,7 +346,6 @@ if (loginForm) {
 
             }
 
-
             if (password !== user.password) {
 
                 showMessage(
@@ -361,24 +358,20 @@ if (loginForm) {
 
             }
 
-
-            /* LOGIN SUCCESS */
-
             localStorage.setItem(
                 "globetrotterLoggedIn",
                 "true"
             );
-
 
             localStorage.setItem(
                 "globetrotterCurrentUser",
                 JSON.stringify(user)
             );
 
-
             const rememberMe =
-                document.getElementById("rememberMe");
-
+                document.getElementById(
+                    "rememberMe"
+                );
 
             if (
                 rememberMe &&
@@ -400,14 +393,9 @@ if (loginForm) {
 
             }
 
-
-            /* IMPORTANT:
-               Remove old editing information
-               when normal login happens.
-            */
-
-            localStorage.removeItem("editingTrip");
-
+            localStorage.removeItem(
+                "editingTrip"
+            );
 
             window.location.href =
                 "dashboard.html";
@@ -423,7 +411,9 @@ if (loginForm) {
 ========================================================= */
 
 const registerForm =
-    document.getElementById("registerForm");
+    document.getElementById(
+        "registerForm"
+    );
 
 
 if (registerForm) {
@@ -434,13 +424,11 @@ if (registerForm) {
 
             event.preventDefault();
 
-
             const firstName =
                 document
                     .getElementById("firstName")
                     .value
                     .trim();
-
 
             const lastName =
                 document
@@ -448,13 +436,11 @@ if (registerForm) {
                     .value
                     .trim();
 
-
             const email =
                 document
                     .getElementById("registerEmail")
                     .value
                     .trim();
-
 
             const username =
                 document
@@ -462,21 +448,17 @@ if (registerForm) {
                     .value
                     .trim();
 
-
             const password =
                 document
                     .getElementById("registerPassword")
                     .value;
-
 
             const terms =
                 document
                     .getElementById("terms")
                     .checked;
 
-
             let valid = true;
-
 
             if (!firstName) {
 
@@ -499,7 +481,6 @@ if (registerForm) {
 
             }
 
-
             if (!lastName) {
 
                 setError(
@@ -520,7 +501,6 @@ if (registerForm) {
                 );
 
             }
-
 
             if (
                 !email ||
@@ -546,7 +526,6 @@ if (registerForm) {
 
             }
 
-
             if (username.length < 3) {
 
                 setError(
@@ -567,7 +546,6 @@ if (registerForm) {
                 );
 
             }
-
 
             if (password.length < 8) {
 
@@ -590,7 +568,6 @@ if (registerForm) {
 
             }
 
-
             if (!terms) {
 
                 showMessage(
@@ -603,11 +580,9 @@ if (registerForm) {
 
             }
 
-
             if (!valid) {
                 return;
             }
-
 
             const user = {
 
@@ -628,12 +603,10 @@ if (registerForm) {
 
             };
 
-
             localStorage.setItem(
                 "globetrotterUser",
                 JSON.stringify(user)
             );
-
 
             showMessage(
                 "registerMessage",
@@ -641,12 +614,9 @@ if (registerForm) {
                 "success"
             );
 
-
             setTimeout(
                 function() {
-
                     showLogin();
-
                 },
                 1200
             );
@@ -676,41 +646,33 @@ if (registerPassword) {
             const password =
                 this.value;
 
-
             let score = 0;
-
 
             if (password.length >= 8) {
                 score++;
             }
 
-
             if (/[A-Z]/.test(password)) {
                 score++;
             }
-
 
             if (/[0-9]/.test(password)) {
                 score++;
             }
 
-
             if (/[^A-Za-z0-9]/.test(password)) {
                 score++;
             }
-
 
             const bar =
                 document.getElementById(
                     "strengthBar"
                 );
 
-
             const text =
                 document.getElementById(
                     "strengthText"
                 );
-
 
             const widths = [
                 "0%",
@@ -720,17 +682,14 @@ if (registerPassword) {
                 "100%"
             ];
 
-
             if (bar) {
                 bar.style.width =
                     widths[score];
             }
 
-
             if (!text) {
                 return;
             }
-
 
             if (password.length === 0) {
 
@@ -778,7 +737,9 @@ if (registerPassword) {
 ========================================================= */
 
 const forgotForm =
-    document.getElementById("forgotForm");
+    document.getElementById(
+        "forgotForm"
+    );
 
 
 if (forgotForm) {
@@ -789,13 +750,11 @@ if (forgotForm) {
 
             event.preventDefault();
 
-
             const email =
                 document
                     .getElementById("forgotEmail")
                     .value
                     .trim();
-
 
             if (
                 !email ||
@@ -812,12 +771,10 @@ if (forgotForm) {
 
             }
 
-
             clearError(
                 "forgotEmail",
                 "forgotEmailError"
             );
-
 
             showScreen("success");
 
@@ -853,21 +810,16 @@ function showToast(message) {
     const toast =
         document.getElementById("toast");
 
-
     if (!toast) {
         return;
     }
 
-
     toast.textContent =
         message;
 
-
     toast.classList.add("show");
 
-
     clearTimeout(toastTimer);
-
 
     toastTimer =
         setTimeout(
@@ -929,10 +881,14 @@ function saveTrips(trips) {
 function calculateDays(startDate, endDate) {
 
     const start =
-        new Date(startDate + "T00:00:00");
+        new Date(
+            startDate + "T00:00:00"
+        );
 
     const end =
-        new Date(endDate + "T00:00:00");
+        new Date(
+            endDate + "T00:00:00"
+        );
 
     const difference =
         end.getTime() -
@@ -986,6 +942,17 @@ function escapeHTML(value) {
 }
 
 
+function escapeAttribute(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+}
+
+
 /* =========================================================
    CUSTOM TRIP MODAL
 ========================================================= */
@@ -997,11 +964,8 @@ function openCustomTrip() {
             "customModal"
         );
 
-
     if (modal) {
-
         modal.classList.add("show");
-
     }
 
 }
@@ -1014,11 +978,8 @@ function closeCustomTrip() {
             "customModal"
         );
 
-
     if (modal) {
-
         modal.classList.remove("show");
-
     }
 
 }
@@ -1035,14 +996,14 @@ function selectDestination(destination) {
             "customDestination"
         );
 
-
     if (customDestination) {
 
         customDestination.value =
             destination;
 
-    }
+        openCustomTrip();
 
+    }
 
     showToast(
         destination +
@@ -1059,19 +1020,15 @@ function selectCustomDestination(destination) {
             "customDestination"
         );
 
-
     if (input) {
-
-        input.value =
-            destination;
-
+        input.value = destination;
     }
 
 }
 
 
 /* =========================================================
-   GENERATE CUSTOM TRIP
+   CREATE NEW CUSTOM TRIP
 ========================================================= */
 
 function generateCustomTrip() {
@@ -1138,8 +1095,6 @@ function generateCustomTrip() {
         interestsInput.value.trim();
 
 
-    /* VALIDATION */
-
     if (!destination) {
 
         showToast(
@@ -1150,7 +1105,6 @@ function generateCustomTrip() {
 
     }
 
-
     if (!startDate || !endDate) {
 
         showToast(
@@ -1160,7 +1114,6 @@ function generateCustomTrip() {
         return;
 
     }
-
 
     if (
         new Date(endDate) <
@@ -1174,7 +1127,6 @@ function generateCustomTrip() {
         return;
 
     }
-
 
     if (
         !budget ||
@@ -1197,14 +1149,6 @@ function generateCustomTrip() {
         );
 
 
-    const trips =
-        getTrips();
-
-
-    /* =====================================================
-       EDIT EXISTING TRIP
-    ===================================================== */
-
     const editingTrip =
         localStorage.getItem(
             "editingTrip"
@@ -1216,12 +1160,15 @@ function generateCustomTrip() {
         try {
 
             const oldTrip =
-                JSON.parse(editingTrip);
-
+                JSON.parse(
+                    editingTrip
+                );
 
             const tripId =
                 Number(oldTrip.id);
 
+            const trips =
+                getTrips();
 
             const index =
                 trips.findIndex(
@@ -1257,6 +1204,63 @@ function generateCustomTrip() {
                 interests:
                     interests,
 
+                stops:
+                    oldTrip.stops &&
+                    Array.isArray(oldTrip.stops)
+
+                        ? oldTrip.stops
+
+                        :
+
+                        [
+
+                            {
+
+                                id:
+                                    Date.now(),
+
+                                city:
+                                    destination,
+
+                                startDate:
+                                    startDate,
+
+                                endDate:
+                                    endDate,
+
+                                activities:
+                                    interests
+                                        ? interests
+                                            .split(",")
+                                            .map(
+                                                item =>
+                                                    item.trim()
+                                            )
+                                            .filter(
+                                                item =>
+                                                    item.length > 0
+                                            )
+                                            .map(
+                                                activity => ({
+
+                                                    name:
+                                                        activity,
+
+                                                    time:
+                                                        "",
+
+                                                    cost:
+                                                        0
+
+                                                })
+                                            )
+
+                                        : []
+
+                            }
+
+                        ],
+
                 createdAt:
                     oldTrip.createdAt ||
                     new Date().toISOString(),
@@ -1288,11 +1292,11 @@ function generateCustomTrip() {
 
             localStorage.setItem(
                 "globeTrotterTrip",
-                JSON.stringify(updatedTrip)
+                JSON.stringify(
+                    updatedTrip
+                )
             );
 
-
-            /* VERY IMPORTANT */
 
             localStorage.removeItem(
                 "editingTrip"
@@ -1302,20 +1306,9 @@ function generateCustomTrip() {
             closeCustomTrip();
 
 
-            showToast(
-                "Trip updated successfully!"
-            );
-
-
-            setTimeout(
-                function() {
-
-                    window.location.href =
-                        "trips.html";
-
-                },
-                700
-            );
+            window.location.href =
+                "itinerary.html?id=" +
+                updatedTrip.id;
 
 
             return;
@@ -1338,14 +1331,60 @@ function generateCustomTrip() {
     }
 
 
-    /* =====================================================
-       CREATE NEW TRIP
-    ===================================================== */
+    const tripId =
+        Date.now();
+
+
+    const firstStop = {
+
+        id:
+            tripId + 1,
+
+        city:
+            destination,
+
+        startDate:
+            startDate,
+
+        endDate:
+            endDate,
+
+        activities:
+            interests
+                ? interests
+                    .split(",")
+                    .map(
+                        item =>
+                            item.trim()
+                    )
+                    .filter(
+                        item =>
+                            item.length > 0
+                    )
+                    .map(
+                        activity => ({
+
+                            name:
+                                activity,
+
+                            time:
+                                "",
+
+                            cost:
+                                0
+
+                        })
+                    )
+
+                : []
+
+    };
+
 
     const trip = {
 
         id:
-            Date.now(),
+            tripId,
 
         destination:
             destination,
@@ -1368,10 +1407,22 @@ function generateCustomTrip() {
         interests:
             interests,
 
+        stops:
+            [
+                firstStop
+            ],
+
         createdAt:
+            new Date().toISOString(),
+
+        updatedAt:
             new Date().toISOString()
 
     };
+
+
+    const trips =
+        getTrips();
 
 
     trips.push(trip);
@@ -1386,10 +1437,6 @@ function generateCustomTrip() {
     );
 
 
-    /* IMPORTANT:
-       Make sure edit mode is completely cleared.
-    */
-
     localStorage.removeItem(
         "editingTrip"
     );
@@ -1398,20 +1445,9 @@ function generateCustomTrip() {
     closeCustomTrip();
 
 
-    showToast(
-        "Trip created successfully!"
-    );
-
-
-    setTimeout(
-        function() {
-
-            window.location.href =
-                "trips.html";
-
-        },
-        700
-    );
+    window.location.href =
+        "itinerary.html?id=" +
+        trip.id;
 
 }
 
@@ -1516,10 +1552,14 @@ function createTrip() {
     }
 
 
+    const tripId =
+        Date.now();
+
+
     const trip = {
 
         id:
-            Date.now(),
+            tripId,
 
         destination:
             destination,
@@ -1545,7 +1585,34 @@ function createTrip() {
         interests:
             "",
 
+        stops:
+            [
+
+                {
+
+                    id:
+                        tripId + 1,
+
+                    city:
+                        destination,
+
+                    startDate:
+                        startDate,
+
+                    endDate:
+                        endDate,
+
+                    activities:
+                        []
+
+                }
+
+            ],
+
         createdAt:
+            new Date().toISOString(),
+
+        updatedAt:
             new Date().toISOString()
 
     };
@@ -1573,7 +1640,8 @@ function createTrip() {
 
 
     window.location.href =
-        "trips.html";
+        "itinerary.html?id=" +
+        trip.id;
 
 }
 
@@ -1586,7 +1654,6 @@ function editTrip(id) {
 
     const trips =
         getTrips();
-
 
     const trip =
         trips.find(
@@ -1607,23 +1674,11 @@ function editTrip(id) {
     }
 
 
-    /*
-       Save which trip is being edited.
-    */
-
     localStorage.setItem(
         "editingTrip",
         JSON.stringify(trip)
     );
 
-
-    /*
-       IMPORTANT:
-       Use a special URL parameter.
-
-       This tells index.html that it should
-       open the modal ONLY for editing.
-    */
 
     window.location.href =
         "index.html?editTrip=true";
@@ -1697,7 +1752,6 @@ function deleteTrip(id) {
             const parsed =
                 JSON.parse(currentTrip);
 
-
             if (
                 Number(parsed.id) ===
                 Number(id)
@@ -1713,44 +1767,8 @@ function deleteTrip(id) {
 
         catch (error) {
 
-            console.error(error);
-
-        }
-
-    }
-
-
-    const editingTrip =
-        localStorage.getItem(
-            "editingTrip"
-        );
-
-
-    if (editingTrip) {
-
-        try {
-
-            const parsed =
-                JSON.parse(editingTrip);
-
-
-            if (
-                Number(parsed.id) ===
-                Number(id)
-            ) {
-
-                localStorage.removeItem(
-                    "editingTrip"
-                );
-
-            }
-
-        }
-
-        catch (error) {
-
             localStorage.removeItem(
-                "editingTrip"
+                "globeTrotterTrip"
             );
 
         }
@@ -1767,25 +1785,17 @@ function deleteTrip(id) {
         function() {
 
             if (
-                window.location.pathname
-                    .toLowerCase()
-                    .includes("trips")
+                typeof loadTrips ===
+                "function"
             ) {
 
-                if (
-                    typeof loadTrips ===
-                    "function"
-                ) {
+                loadTrips();
 
-                    loadTrips();
+            }
 
-                }
+            else {
 
-                else {
-
-                    window.location.reload();
-
-                }
+                window.location.reload();
 
             }
 
@@ -1831,13 +1841,9 @@ function viewTrip(id) {
     );
 
 
-    /*
-       View itinerary WITHOUT opening
-       the Create Trip modal.
-    */
-
     window.location.href =
-        "index.html#itinerary";
+        "itinerary.html?id=" +
+        trip.id;
 
 }
 
@@ -1848,31 +1854,17 @@ function viewTrip(id) {
 
 function loadEditingTrip() {
 
-    /*
-       IMPORTANT:
-       Only open editing mode when the URL
-       contains ?editTrip=true
-    */
-
     const params =
         new URLSearchParams(
             window.location.search
         );
 
 
-    const isEditMode =
-        params.get("editTrip") === "true";
-
-
-    /*
-       NORMAL index.html:
-       DO NOTHING.
-    */
-
-    if (!isEditMode) {
-
+    if (
+        params.get("editTrip") !==
+        "true"
+    ) {
         return;
-
     }
 
 
@@ -1883,9 +1875,7 @@ function loadEditingTrip() {
 
 
     if (!editingTrip) {
-
         return;
-
     }
 
 
@@ -1927,57 +1917,40 @@ function loadEditingTrip() {
 
 
         if (destination) {
-
             destination.value =
                 trip.destination || "";
-
         }
 
 
         if (travelStyle) {
-
             travelStyle.value =
-                trip.tripType ||
-                "Relaxed";
-
+                trip.tripType || "Relaxed";
         }
 
 
         if (start) {
-
             start.value =
                 trip.startDate || "";
-
         }
 
 
         if (end) {
-
             end.value =
                 trip.endDate || "";
-
         }
 
 
         if (budget) {
-
             budget.value =
                 trip.budget || "";
-
         }
 
 
         if (interests) {
-
             interests.value =
                 trip.interests || "";
-
         }
 
-
-        /*
-           NOW and ONLY NOW open modal.
-        */
 
         openCustomTrip();
 
@@ -1990,7 +1963,6 @@ function loadEditingTrip() {
             error
         );
 
-
         localStorage.removeItem(
             "editingTrip"
         );
@@ -2001,7 +1973,1980 @@ function loadEditingTrip() {
 
 
 /* =========================================================
-   ITINERARY
+   GET SELECTED TRIP
+========================================================= */
+
+function getSelectedTrip() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const tripId =
+        params.get("id");
+
+
+    const trips =
+        getTrips();
+
+
+    if (tripId) {
+
+        const trip =
+            trips.find(
+                item =>
+                    Number(item.id) ===
+                    Number(tripId)
+            );
+
+
+        if (trip) {
+
+            localStorage.setItem(
+                "globeTrotterTrip",
+                JSON.stringify(trip)
+            );
+
+
+            return trip;
+
+        }
+
+    }
+
+
+    const savedTrip =
+        localStorage.getItem(
+            "globeTrotterTrip"
+        );
+
+
+    if (!savedTrip) {
+        return null;
+    }
+
+
+    try {
+
+        return JSON.parse(savedTrip);
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not load selected trip:",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================================
+   NORMALIZE ACTIVITIES
+   Converts old activity strings into objects.
+========================================================= */
+
+function normalizeActivities(stop) {
+
+    if (!stop.activities) {
+
+        stop.activities = [];
+
+        return;
+
+    }
+
+
+    stop.activities =
+        stop.activities.map(
+            function(activity) {
+
+                if (
+                    typeof activity ===
+                    "string"
+                ) {
+
+                    return {
+
+                        name:
+                            activity,
+
+                        time:
+                            "",
+
+                        cost:
+                            0
+
+                    };
+
+                }
+
+
+                return {
+
+                    name:
+                        activity.name || "",
+
+                    time:
+                        activity.time || "",
+
+                    cost:
+                        Number(
+                            activity.cost || 0
+                        )
+
+                };
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   LOAD ITINERARY BUILDER
+========================================================= */
+
+function loadItineraryBuilder() {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (!trip) {
+
+        showToast(
+            "No trip selected."
+        );
+
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "trips.html";
+
+            },
+            1000
+        );
+
+
+        return;
+
+    }
+
+
+    if (
+        !trip.stops ||
+        !Array.isArray(trip.stops)
+    ) {
+
+        trip.stops = [
+
+            {
+
+                id:
+                    Date.now(),
+
+                city:
+                    trip.destination || "",
+
+                startDate:
+                    trip.startDate || "",
+
+                endDate:
+                    trip.endDate || "",
+
+                activities:
+                    []
+
+            }
+
+        ];
+
+    }
+
+
+    trip.stops.forEach(
+        function(stop) {
+
+            normalizeActivities(stop);
+
+        }
+    );
+
+
+    saveCurrentTrip(trip);
+
+
+    const title =
+        document.getElementById(
+            "itineraryTitle"
+        );
+
+
+    const subtitle =
+        document.getElementById(
+            "itinerarySubtitle"
+        );
+
+
+    const information =
+        document.getElementById(
+            "tripInformation"
+        );
+
+
+    if (title) {
+
+        title.textContent =
+            trip.destination;
+
+    }
+
+
+    if (subtitle) {
+
+        subtitle.textContent =
+            `${formatDate(
+                trip.startDate
+            )} → ${formatDate(
+                trip.endDate
+            )} · ${trip.days} days`;
+
+    }
+
+
+    if (information) {
+
+        information.innerHTML = `
+
+            <div class="summary-icon">
+                ✈
+            </div>
+
+            <div>
+
+                <h3>
+                    ${escapeHTML(
+                        trip.destination
+                    )}
+                </h3>
+
+                <p>
+                    ${formatDate(
+                        trip.startDate
+                    )}
+                    →
+                    ${formatDate(
+                        trip.endDate
+                    )}
+                </p>
+
+                <p>
+                    ${trip.days} days
+                </p>
+
+                <p>
+                    Budget:
+                    ₹${Number(
+                        trip.budget || 0
+                    ).toLocaleString(
+                        "en-IN"
+                    )}
+                </p>
+
+                <p>
+                    Travel Style:
+                    ${escapeHTML(
+                        trip.tripType ||
+                        "Standard Trip"
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    renderStops(
+        trip.stops
+    );
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   RENDER STOPS
+========================================================= */
+
+function renderStops(stops) {
+
+    const container =
+        document.getElementById(
+            "stopsContainer"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    stops.forEach(
+        function(stop, index) {
+
+            normalizeActivities(stop);
+
+
+            const stopElement =
+                document.createElement(
+                    "div"
+                );
+
+
+            stopElement.className =
+                "itinerary-stop";
+
+
+            stopElement.dataset.id =
+                stop.id;
+
+
+            stopElement.innerHTML = `
+
+                <div class="stop-header">
+
+                    <div>
+
+                        <span class="stop-number">
+                            Stop ${index + 1}
+                        </span>
+
+                        <h2>
+                            ${escapeHTML(
+                                stop.city ||
+                                "New Stop"
+                            )}
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stop-controls">
+
+                        <button
+                            type="button"
+                            onclick="moveStopUp(${stop.id})"
+                            title="Move stop up"
+                        >
+                            ↑
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onclick="moveStopDown(${stop.id})"
+                            title="Move stop down"
+                        >
+                            ↓
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onclick="deleteStop(${stop.id})"
+                            title="Delete stop"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- CITY -->
+
+                    <div class="input-group">
+
+                        <label>
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeAttribute(
+                                stop.city || ""
+                            )}"
+                            onchange="updateStopCity(
+                                ${stop.id},
+                                this.value
+                            )"
+                            placeholder="e.g. Paris"
+                        >
+
+                    </div>
+
+
+                    <!-- START DATE -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            value="${stop.startDate || ""}"
+                            onchange="updateStopDate(
+                                ${stop.id},
+                                'startDate',
+                                this.value
+                            )"
+                        >
+
+                    </div>
+
+
+                    <!-- END DATE -->
+
+                    <div class="input-group">
+
+                        <label>
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            value="${stop.endDate || ""}"
+                            onchange="updateStopDate(
+                                ${stop.id},
+                                'endDate',
+                                this.value
+                            )"
+                        >
+
+                    </div>
+
+
+                    <!-- ACTIVITIES -->
+
+                    <div class="activities-section">
+
+                        <div class="activities-title">
+
+                            <h3>
+                                Activities
+                            </h3>
+
+                        </div>
+
+
+                        <div id="activities-${stop.id}">
+
+                            ${renderActivityInputs(
+                                stop
+                            )}
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="add-activity-btn"
+                            onclick="addActivity(${stop.id})"
+                        >
+                            + Add Activity
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVITY PREVIEW -->
+
+                <div class="activities-preview">
+
+                    ${
+                        (stop.activities || [])
+                            .map(
+                                activity => `
+
+                                    <div class="activity">
+
+                                        <div class="activity-info">
+
+                                            <span class="activity-name">
+                                                ${escapeHTML(
+                                                    activity.name
+                                                )}
+                                            </span>
+
+                                            <span class="activity-meta">
+
+                                                ${
+                                                    activity.time
+                                                        ? "🕒 " +
+                                                          escapeHTML(
+                                                              activity.time
+                                                          )
+                                                        : "🕒 Time not set"
+                                                }
+
+                                            </span>
+
+                                        </div>
+
+
+                                        <span class="activity-cost">
+
+                                            ₹${Number(
+                                                activity.cost || 0
+                                            ).toLocaleString(
+                                                "en-IN"
+                                            )}
+
+                                        </span>
+
+                                    </div>
+
+                                `
+                            )
+                            .join("")
+                    }
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                stopElement
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER ACTIVITY INPUTS
+========================================================= */
+
+function renderActivityInputs(stop) {
+
+    if (
+        !stop.activities ||
+        stop.activities.length === 0
+    ) {
+
+        return `
+
+            <p style="
+                color:#888;
+                margin:0 0 12px;
+            ">
+                No activities added yet.
+            </p>
+
+        `;
+
+    }
+
+
+    return stop.activities
+        .map(
+            function(activity, index) {
+
+                return `
+
+                    <div class="activity-builder">
+
+                        <div class="activity-form-grid">
+
+
+                            <!-- ACTIVITY NAME -->
+
+                            <div class="activity-form-group">
+
+                                <label>
+                                    Activity
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="${escapeAttribute(
+                                        activity.name || ""
+                                    )}"
+                                    placeholder="e.g. Eiffel Tower visit"
+                                    onchange="updateActivity(
+                                        ${stop.id},
+                                        ${index},
+                                        'name',
+                                        this.value
+                                    )"
+                                >
+
+                            </div>
+
+
+                            <!-- TIME -->
+
+                            <div class="activity-form-group">
+
+                                <label>
+                                    Time
+                                </label>
+
+                                <input
+                                    type="time"
+                                    value="${escapeAttribute(
+                                        activity.time || ""
+                                    )}"
+                                    onchange="updateActivity(
+                                        ${stop.id},
+                                        ${index},
+                                        'time',
+                                        this.value
+                                    )"
+                                >
+
+                            </div>
+
+
+                            <!-- COST -->
+
+                            <div class="activity-form-group">
+
+                                <label>
+                                    Cost (₹)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    min="0"
+                                    step="1"
+                                    value="${Number(
+                                        activity.cost || 0
+                                    )}"
+                                    placeholder="0"
+                                    onchange="updateActivity(
+                                        ${stop.id},
+                                        ${index},
+                                        'cost',
+                                        this.value
+                                    )"
+                                >
+
+                            </div>
+
+
+                            <!-- REMOVE -->
+
+                            <button
+                                type="button"
+                                class="remove-activity-btn"
+                                onclick="removeActivity(
+                                    ${stop.id},
+                                    ${index}
+                                )"
+                                title="Remove activity"
+                            >
+                                ✕
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+   ADD ACTIVITY
+========================================================= */
+
+function addActivity(stopId) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(stopId)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    normalizeActivities(stop);
+
+
+    stop.activities.push({
+
+        name:
+            "",
+
+        time:
+            "",
+
+        cost:
+            0
+
+    });
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+
+    showToast(
+        "Activity added. Enter its name, time and cost."
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE ACTIVITY
+========================================================= */
+
+function updateActivity(
+    stopId,
+    activityIndex,
+    field,
+    value
+) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(stopId)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    normalizeActivities(stop);
+
+
+    const activity =
+        stop.activities[
+            activityIndex
+        ];
+
+
+    if (!activity) {
+        return;
+    }
+
+
+    if (field === "cost") {
+
+        activity.cost =
+            Number(value) || 0;
+
+    }
+
+    else {
+
+        activity[field] =
+            value;
+
+    }
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE ACTIVITY
+========================================================= */
+
+function removeActivity(
+    stopId,
+    activityIndex
+) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(stopId)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    normalizeActivities(stop);
+
+
+    stop.activities.splice(
+        activityIndex,
+        1
+    );
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+
+    showToast(
+        "Activity removed."
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE CITY
+========================================================= */
+
+function updateStopCity(id, city) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(id)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    stop.city =
+        city.trim();
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE STOP DATE
+========================================================= */
+
+function updateStopDate(
+    id,
+    field,
+    value
+) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(id)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    stop[field] =
+        value;
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   ADD STOP
+========================================================= */
+
+function addStop() {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (!trip) {
+
+        showToast(
+            "Trip could not be found."
+        );
+
+        return;
+
+    }
+
+
+    if (!trip.stops) {
+        trip.stops = [];
+    }
+
+
+    const lastStop =
+        trip.stops[
+            trip.stops.length - 1
+        ];
+
+
+    const newStop = {
+
+        id:
+            Date.now(),
+
+        city:
+            "",
+
+        startDate:
+            lastStop &&
+            lastStop.endDate
+
+                ? lastStop.endDate
+
+                : trip.startDate,
+
+        endDate:
+            "",
+
+        activities:
+            []
+
+    };
+
+
+    trip.stops.push(
+        newStop
+    );
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+
+    showToast(
+        "New stop added. Enter the city, dates and activities."
+    );
+
+}
+
+
+/* =========================================================
+   MOVE STOP UP
+========================================================= */
+
+function moveStopUp(id) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const index =
+        trip.stops.findIndex(
+            item =>
+                Number(item.id) ===
+                Number(id)
+        );
+
+
+    if (index <= 0) {
+
+        showToast(
+            "This stop is already first."
+        );
+
+        return;
+
+    }
+
+
+    const temp =
+        trip.stops[index];
+
+
+    trip.stops[index] =
+        trip.stops[index - 1];
+
+
+    trip.stops[index - 1] =
+        temp;
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   MOVE STOP DOWN
+========================================================= */
+
+function moveStopDown(id) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const index =
+        trip.stops.findIndex(
+            item =>
+                Number(item.id) ===
+                Number(id)
+        );
+
+
+    if (
+        index === -1 ||
+        index >=
+        trip.stops.length - 1
+    ) {
+
+        showToast(
+            "This stop is already last."
+        );
+
+        return;
+
+    }
+
+
+    const temp =
+        trip.stops[index];
+
+
+    trip.stops[index] =
+        trip.stops[index + 1];
+
+
+    trip.stops[index + 1] =
+        temp;
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+}
+
+
+/* =========================================================
+   DELETE STOP
+========================================================= */
+
+function deleteStop(id) {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    if (
+        trip.stops.length <= 1
+    ) {
+
+        showToast(
+            "At least one stop is required."
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        window.confirm(
+            "Are you sure you want to delete this stop?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    trip.stops =
+        trip.stops.filter(
+            item =>
+                Number(item.id) !==
+                Number(id)
+        );
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    renderStops(
+        trip.stops
+    );
+
+
+    renderCalendarView(
+        trip
+    );
+
+
+    showToast(
+        "Stop deleted."
+    );
+
+}
+
+
+/* =========================================================
+   SAVE CURRENT TRIP
+========================================================= */
+
+function saveCurrentTrip(trip) {
+
+    localStorage.setItem(
+        "globeTrotterTrip",
+        JSON.stringify(trip)
+    );
+
+
+    const trips =
+        getTrips();
+
+
+    const index =
+        trips.findIndex(
+            item =>
+                Number(item.id) ===
+                Number(trip.id)
+        );
+
+
+    if (index !== -1) {
+
+        trip.updatedAt =
+            new Date().toISOString();
+
+
+        trips[index] =
+            trip;
+
+
+        saveTrips(
+            trips
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CALENDAR DATE HELPERS
+========================================================= */
+
+function getDatesBetween(
+    startDate,
+    endDate
+) {
+
+    const dates = [];
+
+
+    if (
+        !startDate ||
+        !endDate
+    ) {
+        return dates;
+    }
+
+
+    const current =
+        new Date(
+            startDate + "T00:00:00"
+        );
+
+
+    const end =
+        new Date(
+            endDate + "T00:00:00"
+        );
+
+
+    while (
+        current <= end
+    ) {
+
+        dates.push(
+            new Date(current)
+        );
+
+
+        current.setDate(
+            current.getDate() + 1
+        );
+
+    }
+
+
+    return dates;
+
+}
+
+
+/* =========================================================
+   FORMAT TIME
+========================================================= */
+
+function formatTime(time) {
+
+    if (!time) {
+        return "Time not set";
+    }
+
+
+    const parts =
+        time.split(":");
+
+
+    if (parts.length < 2) {
+        return time;
+    }
+
+
+    let hours =
+        Number(parts[0]);
+
+    const minutes =
+        parts[1];
+
+
+    const suffix =
+        hours >= 12
+            ? "PM"
+            : "AM";
+
+
+    hours =
+        hours % 12 ||
+        12;
+
+
+    return (
+        hours +
+        ":" +
+        minutes +
+        " " +
+        suffix
+    );
+
+}
+
+
+/* =========================================================
+   RENDER CALENDAR VIEW
+========================================================= */
+
+function renderCalendarView(trip) {
+
+    const container =
+        document.getElementById(
+            "calendarContainer"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+
+        container.innerHTML = "";
+
+        return;
+
+    }
+
+
+    let calendarHTML = "";
+
+
+    trip.stops.forEach(
+        function(stop) {
+
+            normalizeActivities(stop);
+
+
+            const dates =
+                getDatesBetween(
+                    stop.startDate,
+                    stop.endDate
+                );
+
+
+            if (dates.length === 0) {
+
+                return;
+
+            }
+
+
+            dates.forEach(
+                function(date) {
+
+                    const dateString =
+                        date.toISOString()
+                            .split("T")[0];
+
+
+                    const dayActivities =
+                        stop.activities
+                            .filter(
+                                function(activity) {
+
+                                    /*
+                                       If an activity has
+                                       no date field, show it
+                                       on the first day of
+                                       the stop.
+                                    */
+
+                                    if (
+                                        !activity.date
+                                    ) {
+
+                                        return (
+                                            dateString ===
+                                            stop.startDate
+                                        );
+
+                                    }
+
+
+                                    return (
+                                        activity.date ===
+                                        dateString
+                                    );
+
+                                }
+                            );
+
+
+                    calendarHTML += `
+
+                        <div class="calendar-day">
+
+                            <div class="calendar-day-header">
+
+                                <div>
+
+                                    <h3>
+                                        ${date.toLocaleDateString(
+                                            "en-IN",
+                                            {
+                                                weekday:
+                                                    "long",
+                                                day:
+                                                    "numeric",
+                                                month:
+                                                    "short",
+                                                year:
+                                                    "numeric"
+                                            }
+                                        )}
+                                    </h3>
+
+                                    <span class="calendar-city">
+                                        ${escapeHTML(
+                                            stop.city ||
+                                            "City not set"
+                                        )}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="calendar-activities">
+
+                                ${
+                                    dayActivities.length
+                                        ?
+
+                                        dayActivities
+                                            .map(
+                                                activity => `
+
+                                                    <div class="calendar-activity">
+
+                                                        <div class="calendar-time">
+
+                                                            🕒
+                                                            ${escapeHTML(
+                                                                formatTime(
+                                                                    activity.time
+                                                                )
+                                                            )}
+
+                                                        </div>
+
+
+                                                        <div class="calendar-activity-name">
+
+                                                            ${escapeHTML(
+                                                                activity.name ||
+                                                                "Unnamed activity"
+                                                            )}
+
+                                                        </div>
+
+
+                                                        <div class="calendar-cost">
+
+                                                            ₹${Number(
+                                                                activity.cost ||
+                                                                0
+                                                            ).toLocaleString(
+                                                                "en-IN"
+                                                            )}
+
+                                                        </div>
+
+                                                    </div>
+
+                                                `
+                                            )
+                                            .join("")
+
+                                        :
+
+                                        `
+
+                                            <div style="
+                                                color:#888;
+                                                padding:10px 0;
+                                            ">
+                                                No activities planned for this day.
+                                            </div>
+
+                                        `
+                                }
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+        }
+    );
+
+
+    if (!calendarHTML) {
+
+        calendarHTML = `
+
+            <div class="itinerary-stop">
+
+                <h3>
+                    Calendar unavailable
+                </h3>
+
+                <p>
+                    Add valid start and end dates to your stops.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    container.innerHTML =
+        calendarHTML;
+
+}
+
+
+/* =========================================================
+   VIEW MODE
+========================================================= */
+
+function setItineraryView(mode) {
+
+    const listContainer =
+        document.getElementById(
+            "stopsContainer"
+        );
+
+    const calendarContainer =
+        document.getElementById(
+            "calendarContainer"
+        );
+
+    const listButton =
+        document.getElementById(
+            "listViewButton"
+        );
+
+    const calendarButton =
+        document.getElementById(
+            "calendarViewButton"
+        );
+
+
+    if (
+        !listContainer ||
+        !calendarContainer
+    ) {
+        return;
+    }
+
+
+    if (mode === "calendar") {
+
+        listContainer.style.display =
+            "none";
+
+        calendarContainer.style.display =
+            "flex";
+
+
+        if (listButton) {
+            listButton.classList.remove(
+                "active"
+            );
+        }
+
+
+        if (calendarButton) {
+            calendarButton.classList.add(
+                "active"
+            );
+        }
+
+
+        const trip =
+            getSelectedTrip();
+
+
+        if (trip) {
+
+            renderCalendarView(
+                trip
+            );
+
+        }
+
+    }
+
+    else {
+
+        listContainer.style.display =
+            "block";
+
+        calendarContainer.style.display =
+            "none";
+
+
+        if (calendarButton) {
+            calendarButton.classList.remove(
+                "active"
+            );
+        }
+
+
+        if (listButton) {
+            listButton.classList.add(
+                "active"
+            );
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE ITINERARY
+========================================================= */
+
+function saveItinerary() {
+
+    const trip =
+        getSelectedTrip();
+
+
+    if (!trip) {
+
+        showToast(
+            "Trip could not be found."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !trip.stops ||
+        trip.stops.length === 0
+    ) {
+
+        showToast(
+            "Please add at least one stop."
+        );
+
+        return;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < trip.stops.length;
+        i++
+    ) {
+
+        const stop =
+            trip.stops[i];
+
+
+        normalizeActivities(stop);
+
+
+        if (
+            !stop.city ||
+            !stop.city.trim()
+        ) {
+
+            showToast(
+                "Please enter a city for Stop " +
+                (i + 1)
+            );
+
+            return;
+
+        }
+
+
+        if (!stop.startDate) {
+
+            showToast(
+                "Please enter a start date for " +
+                stop.city
+            );
+
+            return;
+
+        }
+
+
+        if (!stop.endDate) {
+
+            showToast(
+                "Please enter an end date for " +
+                stop.city
+            );
+
+            return;
+
+        }
+
+
+        if (
+            new Date(stop.endDate) <
+            new Date(stop.startDate)
+        ) {
+
+            showToast(
+                "End date cannot be before start date for " +
+                stop.city
+            );
+
+            return;
+
+        }
+
+
+        /*
+           Validate activities.
+        */
+
+        for (
+            let j = 0;
+            j < stop.activities.length;
+            j++
+        ) {
+
+            const activity =
+                stop.activities[j];
+
+
+            if (
+                activity.name &&
+                activity.name.trim() &&
+                activity.cost < 0
+            ) {
+
+                showToast(
+                    "Activity cost cannot be negative."
+                );
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+    saveCurrentTrip(
+        trip
+    );
+
+
+    localStorage.setItem(
+        "globeTrotterTrip",
+        JSON.stringify(trip)
+    );
+
+
+    showToast(
+        "Itinerary saved successfully!"
+    );
+
+
+    setTimeout(
+        function() {
+
+            window.location.href =
+                "trips.html";
+
+        },
+        800
+    );
+
+}
+
+
+/* =========================================================
+   OLD ITINERARY SUPPORT
 ========================================================= */
 
 function createItinerary(
@@ -2018,7 +3963,6 @@ function createItinerary(
             "itineraryContainer"
         );
 
-
     const tripSubtitle =
         document.getElementById(
             "tripSubtitle"
@@ -2029,15 +3973,12 @@ function createItinerary(
         !itineraryContainer ||
         !tripSubtitle
     ) {
-
         return;
-
     }
 
 
     const formattedStart =
         formatDate(startDate);
-
 
     const formattedEnd =
         formatDate(endDate);
@@ -2058,7 +3999,8 @@ function createItinerary(
 
         const currentDate =
             new Date(
-                startDate + "T00:00:00"
+                startDate +
+                "T00:00:00"
             );
 
 
@@ -2122,9 +4064,7 @@ function createItinerary(
                     </div>
 
                     <div class="activities">
-
                         ${activities}
-
                     </div>
 
                 </div>
@@ -2147,7 +4087,9 @@ function createItinerary(
             <div>
 
                 <h3>
-                    ${escapeHTML(destination)}
+                    ${escapeHTML(
+                        destination
+                    )}
                 </h3>
 
                 <p>
@@ -2174,7 +4116,7 @@ function createItinerary(
 
 
 /* =========================================================
-   ACTIVITIES
+   ACTIVITIES - OLD ITINERARY SUPPORT
 ========================================================= */
 
 function getActivities(
@@ -2248,13 +4190,17 @@ function getActivities(
     }
 
 
-    if (activities.length === 0) {
+    if (
+        activities.length === 0
+    ) {
 
         if (day === 1) {
 
             activities = [
 
-                `📍 Arrive in ${escapeHTML(destination)}`,
+                `📍 Arrive in ${escapeHTML(
+                    destination
+                )}`,
 
                 "🏨 Check-in and settle into your accommodation",
 
@@ -2284,7 +4230,9 @@ function getActivities(
 
             activities = [
 
-                `📸 Explore the main attractions of ${escapeHTML(destination)}`,
+                `📸 Explore the main attractions of ${escapeHTML(
+                    destination
+                )}`,
 
                 "🍴 Enjoy local cuisine",
 
@@ -2308,77 +4256,6 @@ function getActivities(
             `
         )
         .join("");
-
-}
-
-
-/* =========================================================
-   LOAD SAVED ITINERARY
-========================================================= */
-
-function loadSavedTrip() {
-
-    const savedTrip =
-        localStorage.getItem(
-            "globeTrotterTrip"
-        );
-
-
-    if (!savedTrip) {
-        return;
-    }
-
-
-    try {
-
-        const trip =
-            JSON.parse(savedTrip);
-
-
-        if (
-            trip.destination &&
-            trip.startDate &&
-            trip.endDate
-        ) {
-
-            const days =
-                trip.days ||
-                calculateDays(
-                    trip.startDate,
-                    trip.endDate
-                );
-
-
-            createItinerary(
-
-                trip.destination,
-
-                trip.startDate,
-
-                trip.endDate,
-
-                days,
-
-                trip.tripType ||
-                "Standard Trip",
-
-                trip.interests ||
-                ""
-
-            );
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Could not load saved trip:",
-            error
-        );
-
-    }
 
 }
 
@@ -2411,35 +4288,35 @@ window.addEventListener(
 
 
 /* =========================================================
-   NAVIGATION FIX
+   PAGE LOAD
 ========================================================= */
-
-/*
-   This is the important part for your
-   Explore link.
-
-   When user goes to index.html normally,
-   remove editing mode.
-
-   Therefore:
-
-   trips.html
-       ↓
-   Explore
-       ↓
-   index.html
-       ↓
-   NO CREATE TRIP MODAL
-*/
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-        const isIndexPage =
+        const currentPath =
             window.location.pathname
-                .toLowerCase()
-                .endsWith("index.html");
+                .toLowerCase();
+
+
+        const isIndexPage =
+
+            currentPath.endsWith(
+                "index.html"
+            )
+
+            ||
+
+            currentPath.endsWith(
+                "/"
+            );
+
+
+        const isItineraryPage =
+            currentPath.endsWith(
+                "itinerary.html"
+            );
 
 
         const params =
@@ -2449,13 +4326,9 @@ document.addEventListener(
 
 
         const isEditMode =
-            params.get("editTrip") === "true";
+            params.get("editTrip") ===
+            "true";
 
-
-        /*
-           If index.html is opened normally,
-           clear any old editing state.
-        */
 
         if (
             isIndexPage &&
@@ -2469,24 +4342,21 @@ document.addEventListener(
         }
 
 
-        /*
-           Load saved itinerary.
-           This DOES NOT open the modal.
-        */
-
-        loadSavedTrip();
-
-
-        /*
-           Open modal ONLY when editing.
-        */
-
         if (
             isIndexPage &&
             isEditMode
         ) {
 
             loadEditingTrip();
+
+        }
+
+
+        if (
+            isItineraryPage
+        ) {
+
+            loadItineraryBuilder();
 
         }
 
