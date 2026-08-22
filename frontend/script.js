@@ -46,17 +46,29 @@ function showScreen(name) {
 
 
 function showRegister() {
-    showScreen("register");
+    document.getElementById("loginScreen").classList.remove("active");
+    document.getElementById("forgotScreen").classList.remove("active");
+    document.getElementById("successScreen").classList.remove("active");
+
+    document.getElementById("registerScreen").classList.add("active");
 }
 
 
 function showLogin() {
-    showScreen("login");
+    document.getElementById("registerScreen").classList.remove("active");
+    document.getElementById("forgotScreen").classList.remove("active");
+    document.getElementById("successScreen").classList.remove("active");
+
+    document.getElementById("loginScreen").classList.add("active");
 }
 
 
 function showForgot() {
-    showScreen("forgot");
+    document.getElementById("loginScreen").classList.remove("active");
+    document.getElementById("registerScreen").classList.remove("active");
+    document.getElementById("successScreen").classList.remove("active");
+
+    document.getElementById("forgotScreen").classList.add("active");
 }
 
 
