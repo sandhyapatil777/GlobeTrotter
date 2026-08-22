@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlobeTrotter | Plan Your Trip</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Globe<span>Trotter</span>
+        <span class="plane">✈</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#" class="active">Explore</a>
+        <a href="#trips">My Trips</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#itinerary">Itinerary</a>
+    </div>
+
+    <div class="user-section">
+        <span>Siddhi</span>
+        <div class="user-avatar">S</div>
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-small">
+            YOUR JOURNEY STARTS HERE
+        </span>
+
+        <h1>
+            Plan your next
+            <span>adventure.</span>
+        </h1>
+
+        <p>
+            Create personalized travel itineraries,
+            discover amazing destinations and organize
+            your entire journey in one place.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRIP PLANNER ================= -->
+
+<main class="container">
+
+    <section class="planner">
+
+        <div class="input-group">
+
+            <label>Destination</label>
+
+            <input
+                type="text"
+                id="destination"
+                placeholder="Where do you want to go?"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>Start Date</label>
+
+            <input
+                type="date"
+                id="startDate"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>End Date</label>
+
+            <input
+                type="date"
+                id="endDate"
+            >
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="createTrip()"
+        >
+            Create Trip
+        </button>
+
+    </section>
+
+
+    <!-- ================= DESTINATIONS ================= -->
+
+    <section id="destinations">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Popular Destinations</h2>
+
+                <p>
+                    Get inspired for your next adventure.
+                </p>
+            </div>
+
+            <button
+                class="outline-btn"
+                onclick="openCustomTrip()"
+            >
+                + Custom Itinerary
+            </button>
+
+        </div>
+
+
+        <div class="destination-grid">
+
+
+            <!-- PARIS -->
+
+            <div
+                class="destination-card"
+                onclick="selectDestination('Paris, France')"
+            >
+
+                <div
+                    class="destination-image paris"
+                >
+
+                    <span class="destination-tag">
+                        Romantic
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Paris</h3>
+
+                    <p>
+                        🇫🇷 France · Europe
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <span>4–7 days</span>
+
+                        <strong>
+                            From ₹75k
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BALI -->
+
+            <div
+                class="destination-card"
+                onclick="selectDestination('Bali, Indonesia')"
+            >
+
+                <div
+                    class="destination-image bali"
+                >
+
+                    <span class="destination-tag">
+                        Beach
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Bali</h3>
+
+                    <p>
+                        🇮🇩 Indonesia · Asia
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <span>5–8 days</span>
+
+                        <strong>
+                            From ₹45k
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOKYO -->
+
+            <div
+                class="destination-card"
+                onclick="selectDestination('Tokyo, Japan')"
+            >
+
+                <div
+                    class="destination-image tokyo"
+                >
+
+                    <span class="destination-tag">
+                        Culture
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Tokyo</h3>
+
+                    <p>
+                        🇯🇵 Japan · Asia
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <span>6–9 days</span>
+
+                        <strong>
+                            From ₹90k
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ITINERARY ================= -->
+
+    <section id="itinerary">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Your Itinerary</h2>
+
+                <p id="tripSubtitle">
+                    Create a trip to start planning.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="itineraryContainer"
+            class="itinerary-container"
+        >
+
+            <div class="empty-itinerary">
+
+                <div class="empty-icon">
+                    ✈
+                </div>
+
+                <h3>
+                    No itinerary yet
+                </h3>
+
+                <p>
+                    Enter a destination and travel dates
+                    above to create your itinerary.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================= CUSTOM TRIP MODAL ================= -->
+
+<div
+    id="customModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    Create Your Itinerary
+                </h2>
+
+                <p>
+                    Tell us about your dream trip.
+                </p>
+
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeCustomTrip()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label>Destination</label>
+
+                <input
+                    id="customDestination"
+                    placeholder="e.g. Switzerland"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Travel Style</label>
+
+                <select id="travelStyle">
+
+                    <option>
+                        Relaxed
+                    </option>
+
+                    <option>
+                        Adventure
+                    </option>
+
+                    <option>
+                        Culture & Food
+                    </option>
+
+                    <option>
+                        Budget
+                    </option>
+
+                    <option>
+                        Luxury
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Start Date</label>
+
+                <input
+                    type="date"
+                    id="customStart"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>End Date</label>
+
+                <input
+                    type="date"
+                    id="customEnd"
+                >
+
+            </div>
+
+
+            <div class="input-group full">
+
+                <label>
+                    What would you like to do?
+                </label>
+
+                <textarea
+                    id="interests"
+                    placeholder="Beaches, museums, shopping, hiking, food..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary-btn full-btn"
+            onclick="generateCustomTrip()"
+        >
+            Generate Itinerary →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    id="toast"
+    class="toast"
+>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

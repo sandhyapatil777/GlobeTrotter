@@ -1,0 +1,979 @@
+/* ===============================
+   GLOBAL
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --navy: #10233f;
+    --blue: #2563eb;
+    --light-blue: #eff6ff;
+    --orange: #f97316;
+
+    --text: #172033;
+    --muted: #718096;
+
+    --background: #f7f9fc;
+    --white: #ffffff;
+
+    --border: #e3e8ef;
+
+    --shadow:
+        0 15px 40px rgba(16, 35, 63, 0.08);
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+}
+
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+
+    height: 72px;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom:
+        1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.logo {
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    color: var(--navy);
+}
+
+
+.logo span {
+
+    color: var(--orange);
+}
+
+
+.logo .plane {
+
+    color: var(--blue);
+
+    margin-left: 4px;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 30px;
+}
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: #657286;
+
+    font-size: 14px;
+
+    transition: .2s;
+}
+
+
+.nav-links a:hover {
+
+    color: var(--blue);
+}
+
+
+.nav-links .active {
+
+    color: var(--blue);
+
+    font-weight: 700;
+}
+
+
+.user-section {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.user-avatar {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #dbeafe;
+
+    color: var(--blue);
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+/* ===============================
+   HERO
+================================ */
+
+.hero {
+
+    background:
+        linear-gradient(
+            120deg,
+            #10233f,
+            #174d83
+        );
+
+    color: white;
+
+    padding: 70px 7% 95px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    right: -150px;
+
+    top: -220px;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+.hero-content {
+
+    max-width: 700px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.hero-small {
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #bcd5ed;
+
+    font-weight: 700;
+}
+
+
+.hero h1 {
+
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    margin-top: 12px;
+
+    letter-spacing: -2px;
+}
+
+
+.hero h1 span {
+
+    color: #ff9b5c;
+}
+
+
+.hero p {
+
+    max-width: 650px;
+
+    margin-top: 18px;
+
+    line-height: 1.7;
+
+    color: #d7e5f3;
+
+    font-size: 16px;
+}
+
+
+/* ===============================
+   MAIN CONTAINER
+================================ */
+
+.container {
+
+    max-width: 1180px;
+
+    margin: -40px auto 60px;
+
+    padding: 0 22px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* ===============================
+   PLANNER
+================================ */
+
+.planner {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr auto;
+
+    gap: 14px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    font-weight: 800;
+
+    letter-spacing: .6px;
+
+    color: #8792a3;
+
+    margin-bottom: 7px;
+}
+
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 13px;
+
+    background: #fbfcfe;
+
+    outline: none;
+
+    color: var(--text);
+
+    transition: .2s;
+}
+
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+
+    border-color: #7aaaf7;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37,99,235,.08);
+
+    background: white;
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.primary-btn {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.primary-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.25);
+}
+
+
+.outline-btn {
+
+    border: 1px solid #cbd5e1;
+
+    background: white;
+
+    color: var(--blue);
+
+    padding: 11px 16px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+/* ===============================
+   SECTION
+================================ */
+
+section:not(.hero) {
+
+    scroll-margin-top: 100px;
+}
+
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    margin: 45px 0 18px;
+}
+
+
+.section-header h2 {
+
+    font-size: 24px;
+}
+
+
+.section-header p {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* ===============================
+   DESTINATION CARDS
+================================ */
+
+.destination-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.destination-card {
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    box-shadow:
+        0 7px 25px
+        rgba(16,35,63,.05);
+}
+
+
+.destination-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(16,35,63,.12);
+}
+
+
+.destination-image {
+
+    height: 170px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    position: relative;
+}
+
+
+.paris {
+
+    background-image:
+        url(
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80"
+        );
+}
+
+
+.bali {
+
+    background-image:
+        url(
+        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80"
+        );
+}
+
+
+.tokyo {
+
+    background-image:
+        url(
+        "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=80"
+        );
+}
+
+
+.destination-tag {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    background: white;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.card-content {
+
+    padding: 17px;
+}
+
+
+.card-content h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+.card-content p {
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+.card-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+
+    font-size: 12px;
+}
+
+
+.card-bottom strong {
+
+    color: var(--blue);
+}
+
+
+/* ===============================
+   ITINERARY
+================================ */
+
+.itinerary-container {
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    min-height: 250px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.empty-itinerary {
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+
+.empty-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: var(--light-blue);
+
+    color: var(--blue);
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 25px;
+}
+
+
+.empty-itinerary h3 {
+
+    margin-top: 15px;
+}
+
+
+.empty-itinerary p {
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* ===============================
+   GENERATED ITINERARY
+================================ */
+
+.itinerary-header {
+
+    padding: 22px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.itinerary-header h2 {
+
+    margin-bottom: 5px;
+}
+
+
+.itinerary-header p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.day {
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.day-label {
+
+    padding: 25px 20px;
+
+    background: #f8fafc;
+
+    font-weight: 800;
+
+    color: var(--blue);
+}
+
+
+.activities {
+
+    padding: 15px 25px;
+}
+
+
+.activity {
+
+    display: flex;
+
+    gap: 14px;
+
+    padding: 12px 0;
+}
+
+
+.activity-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    margin-top: 6px;
+
+    flex-shrink: 0;
+}
+
+
+.activity h4 {
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+
+.activity p {
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* ===============================
+   MODAL
+================================ */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(10,25,45,.55);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 500;
+}
+
+
+.modal.show {
+
+    display: flex;
+}
+
+
+.modal-content {
+
+    background: white;
+
+    width: min(600px,100%);
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.2);
+}
+
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.modal-header p {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.close-btn {
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f4f8;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+
+    margin: 25px 0;
+}
+
+
+.full {
+
+    grid-column: 1 / -1;
+}
+
+
+textarea {
+
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+.full-btn {
+
+    width: 100%;
+}
+
+
+/* ===============================
+   TOAST
+================================ */
+
+.toast {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 14px 18px;
+
+    border-radius: 10px;
+
+    display: none;
+
+    z-index: 1000;
+
+    font-size: 13px;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:900px) {
+
+    .planner {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .destination-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .nav-links {
+
+        display: none;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .hero h1 {
+
+        font-size: 35px;
+    }
+
+    .planner {
+
+        grid-template-columns: 1fr;
+    }
+
+    .destination-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+
+        grid-column: auto;
+    }
+
+    .section-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        flex-direction: column;
+    }
+
+    .day {
+
+        grid-template-columns:
+            70px 1fr;
+    }
+}

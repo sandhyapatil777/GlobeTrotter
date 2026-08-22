@@ -1,0 +1,1292 @@
+/* =========================================
+   GLOBETROTTER AUTHENTICATION UI
+========================================= */
+
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+:root {
+
+    --navy: #12233f;
+
+    --navy-2: #193a60;
+
+    --blue: #2563eb;
+
+    --blue-dark: #1d4ed8;
+
+    --orange: #f97316;
+
+    --cream: #fffaf4;
+
+    --text: #172033;
+
+    --muted: #738096;
+
+    --line: #e4e8ef;
+
+    --soft: #f7f9fc;
+
+    --white: #ffffff;
+
+    --green: #0f9f72;
+
+    --red: #dc3545;
+
+    --shadow:
+        0 30px 90px
+        rgba(18, 35, 63, .14);
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(37, 99, 235, .10),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(249, 115, 22, .09),
+            transparent 25%
+        ),
+
+        #f4f7fb;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 28px;
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   MAIN AUTH CONTAINER
+========================================= */
+
+.auth-shell {
+
+    width: min(1120px, 100%);
+
+    min-height: 700px;
+
+    display: grid;
+
+    grid-template-columns:
+        44% 56%;
+
+    background: var(--white);
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+/* =========================================
+   LEFT BRAND PANEL
+========================================= */
+
+.brand-panel {
+
+    position: relative;
+
+    padding: 45px;
+
+    color: white;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(18, 35, 63, .97),
+            rgba(25, 72, 116, .96)
+        ),
+
+        #12233f;
+
+}
+
+
+.brand-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    right: -210px;
+
+    top: -160px;
+
+    background:
+        rgba(255,255,255,.07);
+
+}
+
+
+.brand-panel::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    border-radius: 50%;
+
+    left: -170px;
+
+    bottom: -140px;
+
+    background:
+        rgba(249,115,22,.10);
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 23px;
+
+    font-weight: 850;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.brand-mark {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    font-size: 23px;
+
+}
+
+
+.brand > span > span,
+.mobile-brand span {
+
+    color: var(--orange);
+
+}
+
+
+/* =========================================
+   BRAND CONTENT
+========================================= */
+
+.brand-copy {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 120px;
+
+}
+
+
+.eyebrow,
+.step {
+
+    color: #8fb7df;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+
+.brand-copy h1 {
+
+    margin-top: 15px;
+
+    font-size: 46px;
+
+    line-height: 1.04;
+
+    letter-spacing: -2px;
+
+}
+
+
+.brand-copy h1 em {
+
+    color: #ff9b5c;
+
+    font-style: normal;
+
+}
+
+
+.description {
+
+    max-width: 400px;
+
+    margin-top: 22px;
+
+    color: #c8d7e8;
+
+    line-height: 1.75;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   TRAVEL CARD
+========================================= */
+
+.travel-card {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 45px;
+
+    right: 45px;
+
+    bottom: 100px;
+
+    padding: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.mini-photo {
+
+    width: 54px;
+
+    height: 54px;
+
+    flex: none;
+
+    border-radius: 12px;
+
+    background:
+
+        url(
+            "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=300&q=80"
+        )
+
+        center / cover;
+
+}
+
+
+.travel-card div:nth-child(2) {
+
+    display: grid;
+
+    gap: 4px;
+
+}
+
+
+.mini-label {
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    color: #9fc2e3;
+
+    font-weight: 800;
+
+}
+
+
+.travel-card strong {
+
+    font-size: 12px;
+
+}
+
+
+.arrow {
+
+    margin-left: auto;
+
+    font-size: 20px;
+
+    color: #ffb07c;
+
+}
+
+
+/* =========================================
+   TRUST ROW
+========================================= */
+
+.trust-row {
+
+    position: absolute;
+
+    z-index: 2;
+
+    left: 45px;
+
+    bottom: 42px;
+
+    right: 45px;
+
+    display: flex;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+    color: #b9cce0;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   RIGHT AUTH PANEL
+========================================= */
+
+.auth-panel {
+
+    padding: 55px 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    background: white;
+
+}
+
+
+.screen {
+
+    width: 100%;
+
+    max-width: 470px;
+
+    margin: auto;
+
+    display: none;
+
+    animation:
+        appear .3s ease;
+
+}
+
+
+.screen.active {
+
+    display: block;
+
+}
+
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: none;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE LOGO
+========================================= */
+
+.mobile-brand {
+
+    display: none;
+
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.heading {
+
+    margin:
+        12px 0 27px;
+
+}
+
+
+.heading h2 {
+
+    margin-top: 8px;
+
+    font-size: 31px;
+
+    line-height: 1.15;
+
+    letter-spacing: -.9px;
+
+}
+
+
+.heading p {
+
+    margin-top: 9px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form {
+
+    display: grid;
+
+    gap: 17px;
+
+}
+
+
+.field label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+}
+
+
+.field input {
+
+    width: 100%;
+
+    height: 48px;
+
+    border:
+        1px solid var(--line);
+
+    background: #fbfcfe;
+
+    border-radius: 11px;
+
+    padding: 0 14px;
+
+    outline: none;
+
+    color: var(--text);
+
+    transition: .2s;
+
+}
+
+
+.input-wrap {
+
+    position: relative;
+
+}
+
+
+.input-wrap input {
+
+    padding-left: 42px;
+
+    padding-right: 58px;
+
+}
+
+
+.input-icon {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #9aa6b6;
+
+    font-size: 13px;
+
+    z-index: 1;
+
+}
+
+
+.field input:focus {
+
+    border-color: #82aef6;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37, 99, 235, .08);
+
+}
+
+
+.field input.invalid {
+
+    border-color: #ef8c97;
+
+}
+
+
+/* =========================================
+   SHOW / HIDE PASSWORD
+========================================= */
+
+.eye {
+
+    position: absolute;
+
+    right: 11px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--blue);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+
+    display: block;
+
+    min-height: 0;
+
+    margin-top: 5px;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   REMEMBER ME
+========================================= */
+
+.form-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.check {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+.check input {
+
+    width: 14px;
+
+    height: 14px;
+
+    accent-color: var(--blue);
+
+}
+
+
+/* =========================================
+   TEXT BUTTON
+========================================= */
+
+.text-button {
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    padding: 0;
+
+}
+
+
+.text-button:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================
+   PRIMARY BUTTON
+========================================= */
+
+.primary-btn {
+
+    width: 100%;
+
+    height: 49px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--blue-dark)
+        );
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 24px
+        rgba(37, 99, 235, .18);
+
+    transition: .2s;
+
+}
+
+
+.primary-btn:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(37, 99, 235, .25);
+
+}
+
+
+.primary-btn span {
+
+    margin-left: 7px;
+
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 20px 0;
+
+    color: #a3acb9;
+
+    font-size: 11px;
+
+}
+
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    height: 1px;
+
+    background: var(--line);
+
+    flex: 1;
+
+}
+
+
+/* =========================================
+   GOOGLE BUTTON
+========================================= */
+
+.social-btn {
+
+    width: 100%;
+
+    height: 46px;
+
+    border:
+        1px solid var(--line);
+
+    background: white;
+
+    border-radius: 11px;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.google {
+
+    display: inline-grid;
+
+    place-items: center;
+
+    margin-right: 7px;
+
+    color: #4285f4;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================
+   SWITCH LOGIN / REGISTER
+========================================= */
+
+.switch-text {
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 23px;
+
+}
+
+
+/* =========================================
+   TWO COLUMN FORM
+========================================= */
+
+.two-col {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 13px;
+
+}
+
+
+/* =========================================
+   PASSWORD STRENGTH
+========================================= */
+
+.strength {
+
+    height: 4px;
+
+    margin-top: 7px;
+
+    border-radius: 10px;
+
+    background: #e8edf3;
+
+    overflow: hidden;
+
+}
+
+
+#strengthBar {
+
+    height: 100%;
+
+    width: 0;
+
+    background: var(--blue);
+
+    transition: .25s;
+
+}
+
+
+.hint {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   TERMS
+========================================= */
+
+.terms {
+
+    align-items: flex-start;
+
+}
+
+
+.terms a {
+
+    color: var(--blue);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.back-link {
+
+    margin-bottom: 35px;
+
+}
+
+
+.recovery-icon,
+.success-icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 19px;
+
+    margin-bottom: 22px;
+
+    font-size: 26px;
+
+}
+
+
+.recovery-icon {
+
+    color: var(--blue);
+
+    background: #eff6ff;
+
+}
+
+
+.success-icon {
+
+    color: var(--green);
+
+    background: #eafaf4;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================
+   SECURITY NOTE
+========================================= */
+
+.recovery-note {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 23px;
+
+    padding: 13px;
+
+    border-radius: 11px;
+
+    background: #f8fafc;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   SUCCESS
+========================================= */
+
+.centered {
+
+    text-align: center;
+
+}
+
+
+.center-button {
+
+    display: block;
+
+    margin:
+        18px auto 0;
+
+}
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+.message {
+
+    display: none;
+
+    padding: 11px 13px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+
+}
+
+
+.message.show {
+
+    display: block;
+
+}
+
+
+.message.success {
+
+    color: #087453;
+
+    background: #ecfdf5;
+
+    border:
+        1px solid #b7efd9;
+
+}
+
+
+.message.error {
+
+    color: #b42331;
+
+    background: #fff1f2;
+
+    border:
+        1px solid #ffc5ca;
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast {
+
+    position: fixed;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    z-index: 100;
+
+    display: none;
+
+    max-width: 320px;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    background: var(--navy);
+
+    color: white;
+
+    font-size: 11px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.15);
+
+}
+
+
+/* =========================================
+   RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    body {
+
+        padding: 14px;
+
+    }
+
+
+    .auth-shell {
+
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+    }
+
+
+    .brand-panel {
+
+        display: none;
+
+    }
+
+
+    .auth-panel {
+
+        min-height: 680px;
+
+        padding:
+            35px 25px;
+
+    }
+
+
+    .mobile-brand {
+
+        display: block;
+
+        color: var(--navy);
+
+        font-size: 20px;
+
+        font-weight: 850;
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .mobile-brand span {
+
+        color: var(--orange);
+
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .auth-panel {
+
+        padding:
+            28px 20px;
+
+    }
+
+
+    .heading h2 {
+
+        font-size: 27px;
+
+    }
+
+
+    .two-col {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

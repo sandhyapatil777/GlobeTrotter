@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GlobeTrotter | Explore</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fa;
+            color: #222;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        header {
+            height: 70px;
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 45px;
+
+            border-bottom: 1px solid #e5e5e5;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+
+        .logo span {
+            color: #e67e22;
+        }
+
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .profile-circle {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #e67e22;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================
+           MAIN
+        ===================================== */
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 25px 40px 120px;
+        }
+
+
+        /* =====================================
+           BANNER
+        ===================================== */
+
+        .banner {
+
+            width: 100%;
+            height: 430px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.25),
+                    rgba(0,0,0,0.50)
+                ),
+
+                url(
+                    "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=80"
+                );
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px;
+        }
+
+
+        .banner-content {
+            color: white;
+            max-width: 650px;
+        }
+
+
+        .banner-content small {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        .banner-content h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+
+        .banner-content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================
+           TOOLBAR
+        ===================================== */
+
+        .toolbar {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: center;
+
+            width: 100%;
+        }
+
+
+        .search-box {
+
+            flex: 1;
+
+            position: relative;
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            padding:
+                0 45px 0 45px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        .search-box input:focus {
+
+            border-color: #e67e22;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(230,126,34,0.12);
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 17px;
+            top: 16px;
+
+            font-size: 18px;
+        }
+
+
+        .clear-search {
+
+            position: absolute;
+
+            right: 12px;
+            top: 13px;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            display: none;
+        }
+
+
+        .toolbar select {
+
+            height: 52px;
+
+            padding: 0 18px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 12px;
+
+            background: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            min-width: 140px;
+
+            outline: none;
+        }
+
+
+        .toolbar select:focus {
+
+            border-color: #e67e22;
+        }
+
+
+        /* =====================================
+           SEARCH RESULT MESSAGE
+        ===================================== */
+
+        .search-result {
+
+            margin-top: 15px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            display: none;
+        }
+
+
+        /* =====================================
+           SECTION
+        ===================================== */
+
+        .section {
+
+            margin-top: 40px;
+        }
+
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .section-header h2 {
+
+            font-size: 27px;
+        }
+
+
+        .section-header p {
+
+            color: #777;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================
+           DESTINATION GRID
+        ===================================== */
+
+        .destination-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .destination-card {
+
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            border:
+                1px solid #eee;
+        }
+
+
+        .destination-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(0,0,0,0.10);
+        }
+
+
+        .destination-image {
+
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+        }
+
+
+        .destination-info {
+
+            padding: 16px;
+        }
+
+
+        .destination-info h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .destination-info p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        .tags {
+
+            margin-top: 10px;
+
+            display: flex;
+
+            gap: 6px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .tag {
+
+            background: #fff1e6;
+
+            color: #d96d12;
+
+            padding:
+                4px 8px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================
+           NO RESULTS
+        ===================================== */
+
+        .no-results {
+
+            display: none;
+
+            background: white;
+
+            border:
+                1px dashed #ccc;
+
+            border-radius: 15px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            color: #777;
+
+            grid-column: 1 / -1;
+        }
+
+
+        .no-results h3 {
+
+            color: #333;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================
+           PREVIOUS TRIPS
+        ===================================== */
+
+        .trips-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .trip-card {
+
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #eee;
+        }
+
+
+        .trip-image {
+
+            width: 100%;
+
+            height: 180px;
+
+            object-fit: cover;
+        }
+
+
+        .trip-info {
+
+            padding: 18px;
+        }
+
+
+        .trip-info h3 {
+
+            margin-bottom: 8px;
+        }
+
+
+        .trip-info p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================
+           PLAN TRIP BUTTON
+        ===================================== */
+
+        .plan-trip-btn {
+
+            position: fixed;
+
+            right: 30px;
+            bottom: 30px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #e67e22;
+
+            color: white;
+
+            padding:
+                17px 27px;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(230,126,34,0.35);
+
+            transition: 0.25s;
+
+            z-index: 200;
+        }
+
+
+        .plan-trip-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #d96d12;
+        }
+
+
+        /* =====================================
+           DESTINATION MODAL
+        ===================================== */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            z-index: 500;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+
+        .modal.active {
+
+            display: flex;
+        }
+
+
+        .modal-content {
+
+            background: white;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            position: relative;
+        }
+
+
+        .modal-close {
+
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+
+        .modal-content h2 {
+
+            margin-bottom: 10px;
+        }
+
+
+        .modal-content p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .modal-btn {
+
+            width: 100%;
+
+            border: none;
+
+            background: #e67e22;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1100px) {
+
+            .destination-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .toolbar {
+
+                flex-wrap: wrap;
+            }
+
+
+            .search-box {
+
+                width: 100%;
+
+                flex-basis: 100%;
+            }
+
+
+            .toolbar select {
+
+                flex: 1;
+            }
+
+
+            .destination-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .trips-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+
+                padding: 0 20px;
+            }
+
+
+            .user-area span {
+
+                display: none;
+            }
+
+
+            .container {
+
+                padding:
+                    20px 15px 110px;
+            }
+
+
+            .banner {
+
+                height: 350px;
+
+                padding: 30px;
+            }
+
+
+            .banner-content h1 {
+
+                font-size: 36px;
+            }
+
+
+            .toolbar select {
+
+                min-width: 0;
+            }
+
+
+            .destination-grid,
+            .trips-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+====================================== -->
+
+<header>
+
+    <div class="logo">
+        Globe<span>Trotter</span>
+    </div>
+
+
+    <div class="user-area">
+
+        <span id="welcomeText">
+            Welcome back!
+        </span>
+
+        <div
+            class="profile-circle"
+            id="profileCircle"
+        >
+            U
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+====================================== -->
+
+<main class="container">
+
+
+    <!-- =================================
+         BANNER
+    ================================== -->
+
+    <section class="banner">
+
+        <div class="banner-content">
+
+            <small>
+                EXPLORE THE WORLD
+            </small>
+
+            <h1>
+                Where will your
+                next journey take you?
+            </h1>
+
+            <p>
+                Discover amazing destinations,
+                explore new cities and plan
+                unforgettable adventures.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         SEARCH + GROUP + FILTER + SORT
+    ================================== -->
+
+    <div class="toolbar">
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+
+            <input
+                type="text"
+                id="citySearch"
+                placeholder="Search cities, countries or destinations..."
+                autocomplete="off"
+            >
+
+
+            <button
+                class="clear-search"
+                id="clearSearch"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- GROUP BY -->
+
+        <select id="groupBy">
+
+            <option value="none">
+                Group By
+            </option>
+
+            <option value="country">
+                Country
+            </option>
+
+            <option value="region">
+                Region
+            </option>
+
+            <option value="continent">
+                Continent
+            </option>
+
+        </select>
+
+
+        <!-- FILTER -->
+
+        <select id="filter">
+
+            <option value="all">
+                Filter
+            </option>
+
+            <option value="popular">
+                Popular
+            </option>
+
+            <option value="budget">
+                Budget Friendly
+            </option>
+
+            <option value="nature">
+                Nature
+            </option>
+
+            <option value="culture">
+                Culture
+            </option>
+
+        </select>
+
+
+        <!-- SORT -->
+
+        <select id="sortBy">
+
+            <option value="default">
+                Sort By
+            </option>
+
+            <option value="nameAsc">
+                Name A → Z
+            </option>
+
+            <option value="nameDesc">
+                Name Z → A
+            </option>
+
+            <option value="popular">
+                Popularity
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        class="search-result"
+        id="searchResult"
+    ></div>
+
+
+
+    <!-- =================================
+         TOP REGIONAL SELECTIONS
+    ================================== -->
+
+    <section class="section">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Top Regional Selections
+                </h2>
+
+                <p>
+                    Explore popular destinations
+                    around the world.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="destination-grid"
+            id="destinationGrid"
+        >
+
+
+            <!-- INDIA / MUMBAI -->
+
+            <div
+                class="destination-card"
+                data-city="Mumbai"
+                data-country="India"
+                data-region="West India"
+                data-continent="Asia"
+                data-category="popular culture"
+                data-popularity="95"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80"
+                    alt="Mumbai"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Mumbai
+                    </h3>
+
+                    <p>
+                        India • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                        <span class="tag">
+                            Culture
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INDIA / GOA -->
+
+            <div
+                class="destination-card"
+                data-city="Goa"
+                data-country="India"
+                data-region="West India"
+                data-continent="Asia"
+                data-category="popular nature"
+                data-popularity="98"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80"
+                    alt="Goa"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Goa
+                    </h3>
+
+                    <p>
+                        India • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                        <span class="tag">
+                            Nature
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INDIA / DELHI -->
+
+            <div
+                class="destination-card"
+                data-city="Delhi"
+                data-country="India"
+                data-region="North India"
+                data-continent="Asia"
+                data-category="culture popular"
+                data-popularity="90"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80"
+                    alt="Delhi"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Delhi
+                    </h3>
+
+                    <p>
+                        India • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Culture
+                        </span>
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INDIA / JAIPUR -->
+
+            <div
+                class="destination-card"
+                data-city="Jaipur"
+                data-country="India"
+                data-region="North India"
+                data-continent="Asia"
+                data-category="culture budget"
+                data-popularity="88"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80"
+                    alt="Jaipur"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Jaipur
+                    </h3>
+
+                    <p>
+                        India • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Culture
+                        </span>
+
+                        <span class="tag">
+                            Budget
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INDIA / KERALA -->
+
+            <div
+                class="destination-card"
+                data-city="Kerala"
+                data-country="India"
+                data-region="South India"
+                data-continent="Asia"
+                data-category="nature"
+                data-popularity="91"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80"
+                    alt="Kerala"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Kerala
+                    </h3>
+
+                    <p>
+                        India • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Nature
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DUBAI -->
+
+            <div
+                class="destination-card"
+                data-city="Dubai"
+                data-country="United Arab Emirates"
+                data-region="Middle East"
+                data-continent="Asia"
+                data-category="popular"
+                data-popularity="97"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80"
+                    alt="Dubai"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Dubai
+                    </h3>
+
+                    <p>
+                        UAE • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PARIS -->
+
+            <div
+                class="destination-card"
+                data-city="Paris"
+                data-country="France"
+                data-region="Western Europe"
+                data-continent="Europe"
+                data-category="popular culture"
+                data-popularity="99"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80"
+                    alt="Paris"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Paris
+                    </h3>
+
+                    <p>
+                        France • Europe
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                        <span class="tag">
+                            Culture
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOKYO -->
+
+            <div
+                class="destination-card"
+                data-city="Tokyo"
+                data-country="Japan"
+                data-region="East Asia"
+                data-continent="Asia"
+                data-category="popular culture"
+                data-popularity="96"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80"
+                    alt="Tokyo"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Tokyo
+                    </h3>
+
+                    <p>
+                        Japan • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                        <span class="tag">
+                            Culture
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NEW YORK -->
+
+            <div
+                class="destination-card"
+                data-city="New York"
+                data-country="United States"
+                data-region="North America"
+                data-continent="North America"
+                data-category="popular culture"
+                data-popularity="94"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=800&q=80"
+                    alt="New York"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        New York
+                    </h3>
+
+                    <p>
+                        USA • North America
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LONDON -->
+
+            <div
+                class="destination-card"
+                data-city="London"
+                data-country="United Kingdom"
+                data-region="Western Europe"
+                data-continent="Europe"
+                data-category="popular culture"
+                data-popularity="93"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80"
+                    alt="London"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        London
+                    </h3>
+
+                    <p>
+                        UK • Europe
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Popular
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BALI -->
+
+            <div
+                class="destination-card"
+                data-city="Bali"
+                data-country="Indonesia"
+                data-region="Southeast Asia"
+                data-continent="Asia"
+                data-category="nature popular"
+                data-popularity="92"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80"
+                    alt="Bali"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Bali
+                    </h3>
+
+                    <p>
+                        Indonesia • Asia
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Nature
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SWITZERLAND -->
+
+            <div
+                class="destination-card"
+                data-city="Zurich"
+                data-country="Switzerland"
+                data-region="Central Europe"
+                data-continent="Europe"
+                data-category="nature"
+                data-popularity="89"
+            >
+
+                <img
+                    class="destination-image"
+                    src="https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=800&q=80"
+                    alt="Switzerland"
+                >
+
+                <div class="destination-info">
+
+                    <h3>
+                        Zurich
+                    </h3>
+
+                    <p>
+                        Switzerland • Europe
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Nature
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <h3>
+                    No destinations found
+                </h3>
+
+                <p>
+                    Try searching for another
+                    city, country or destination.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         PREVIOUS TRIPS
+    ================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Previous Trips
+                </h2>
+
+                <p>
+                    Your recently completed journeys.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="trips-container">
+
+
+            <div class="trip-card">
+
+                <img
+                    class="trip-image"
+                    src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80"
+                    alt="Goa"
+                >
+
+                <div class="trip-info">
+
+                    <h3>
+                        Goa Getaway
+                    </h3>
+
+                    <p>
+                        Goa, India • 5 Days
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trip-card">
+
+                <img
+                    class="trip-image"
+                    src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80"
+                    alt="Paris"
+                >
+
+                <div class="trip-info">
+
+                    <h3>
+                        Paris Adventure
+                    </h3>
+
+                    <p>
+                        Paris, France • 7 Days
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trip-card">
+
+                <img
+                    class="trip-image"
+                    src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80"
+                    alt="Tokyo"
+                >
+
+                <div class="trip-info">
+
+                    <h3>
+                        Tokyo Explorer
+                    </h3>
+
+                    <p>
+                        Tokyo, Japan • 6 Days
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     PLAN A TRIP BUTTON
+====================================== -->
+
+<button
+    class="plan-trip-btn"
+    id="planTripBtn"
+    type="button"
+>
+    + Plan a Trip
+</button>
+
+
+
+<!-- =====================================
+     DESTINATION MODAL
+====================================== -->
+
+<div
+    class="modal"
+    id="destinationModal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </button>
+
+        <h2 id="modalTitle">
+            Destination
+        </h2>
+
+        <p id="modalDescription">
+            Explore this destination.
+        </p>
+
+        <button
+            class="modal-btn"
+            id="modalPlanButton"
+        >
+            Plan a Trip Here →
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   GET ELEMENTS
+========================================= */
+
+const searchInput =
+    document.getElementById(
+        "citySearch"
+    );
+
+
+const clearSearch =
+    document.getElementById(
+        "clearSearch"
+    );
+
+
+const groupBy =
+    document.getElementById(
+        "groupBy"
+    );
+
+
+const filter =
+    document.getElementById(
+        "filter"
+    );
+
+
+const sortBy =
+    document.getElementById(
+        "sortBy"
+    );
+
+
+const destinationGrid =
+    document.getElementById(
+        "destinationGrid"
+    );
+
+
+const noResults =
+    document.getElementById(
+        "noResults"
+    );
+
+
+const searchResult =
+    document.getElementById(
+        "searchResult"
+    );
+
+
+const planTripBtn =
+    document.getElementById(
+        "planTripBtn"
+    );
+
+
+const cards = Array.from(
+
+    document.querySelectorAll(
+        ".destination-card"
+    )
+
+);
+
+
+
+/* =========================================
+   DISPLAY USER NAME
+========================================= */
+
+const savedUser =
+    JSON.parse(
+
+        localStorage.getItem(
+            "globetrotterUser"
+        )
+
+    );
+
+
+if (savedUser) {
+
+    document.getElementById(
+        "welcomeText"
+    ).textContent =
+        "Welcome, " +
+        savedUser.firstName +
+        "!";
+
+
+    const firstLetter =
+        savedUser.firstName
+            .charAt(0)
+            .toUpperCase();
+
+
+    document.getElementById(
+        "profileCircle"
+    ).textContent =
+        firstLetter;
+
+}
+
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function applyFilters() {
+
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const filterValue =
+        filter.value;
+
+
+    const groupValue =
+        groupBy.value;
+
+
+    let visibleCards = [];
+
+
+    cards.forEach(card => {
+
+
+        const city =
+            card.dataset.city
+                .toLowerCase();
+
+
+        const country =
+            card.dataset.country
+                .toLowerCase();
+
+
+        const region =
+            card.dataset.region
+                .toLowerCase();
+
+
+        const continent =
+            card.dataset.continent
+                .toLowerCase();
+
+
+        const category =
+            card.dataset.category
+                .toLowerCase();
+
+
+        /*
+           Search checks:
+
+           City
+           Country
+           Region
+           Continent
+           Category
+        */
+
+        const searchableText =
+
+            city + " " +
+            country + " " +
+            region + " " +
+            continent + " " +
+            category;
+
+
+        const matchesSearch =
+            searchableText.includes(
+                search
+            );
+
+
+        let matchesFilter = true;
+
+
+        if (
+            filterValue !== "all"
+        ) {
+
+            matchesFilter =
+                category.includes(
+                    filterValue
+                );
+
+        }
+
+
+        /*
+           GROUP BY
+        */
+
+        let matchesGroup = true;
+
+
+        if (
+            groupValue !== "none"
+        ) {
+
+            if (
+                groupValue === "country"
+            ) {
+
+                matchesGroup =
+                    country.length > 0;
+
+            }
+
+            else if (
+                groupValue === "region"
+            ) {
+
+                matchesGroup =
+                    region.length > 0;
+
+            }
+
+            else if (
+                groupValue === "continent"
+            ) {
+
+                matchesGroup =
+                    continent.length > 0;
+
+            }
+
+        }
+
+
+        if (
+            matchesSearch &&
+            matchesFilter &&
+            matchesGroup
+        ) {
+
+            visibleCards.push(card);
+
+        }
+
+        else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    /* =================================
+       SORT
+    ================================= */
+
+    if (
+        sortBy.value ===
+        "nameAsc"
+    ) {
+
+        visibleCards.sort(
+
+            (a, b) =>
+
+                a.dataset.city
+                    .localeCompare(
+                        b.dataset.city
+                    )
+
+        );
+
+    }
+
+
+    if (
+        sortBy.value ===
+        "nameDesc"
+    ) {
+
+        visibleCards.sort(
+
+            (a, b) =>
+
+                b.dataset.city
+                    .localeCompare(
+                        a.dataset.city
+                    )
+
+        );
+
+    }
+
+
+    if (
+        sortBy.value ===
+        "popular"
+    ) {
+
+        visibleCards.sort(
+
+            (a, b) =>
+
+                Number(
+                    b.dataset.popularity
+                ) -
+
+                Number(
+                    a.dataset.popularity
+                )
+
+        );
+
+    }
+
+
+    /*
+       Put sorted cards back
+       into the grid.
+    */
+
+    visibleCards.forEach(card => {
+
+        card.style.display = "";
+
+        destinationGrid.appendChild(
+            card
+        );
+
+    });
+
+
+    /*
+       Keep "No Results" at the end.
+    */
+
+    destinationGrid.appendChild(
+        noResults
+    );
+
+
+    /* =================================
+       RESULT MESSAGE
+    ================================= */
+
+    if (search.length > 0) {
+
+        searchResult.style.display =
+            "block";
+
+
+        searchResult.textContent =
+
+            visibleCards.length +
+            " destination" +
+            (
+                visibleCards.length === 1
+                    ? ""
+                    : "s"
+            ) +
+            " found for \"" +
+            searchInput.value +
+            "\"";
+
+    }
+
+    else {
+
+        searchResult.style.display =
+            "none";
+
+    }
+
+
+    /* =================================
+       NO RESULTS
+    ================================= */
+
+    if (
+        visibleCards.length === 0
+    ) {
+
+        noResults.style.display =
+            "block";
+
+    }
+
+    else {
+
+        noResults.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =========================================
+   SEARCH INPUT
+========================================= */
+
+searchInput.addEventListener(
+
+    "input",
+
+    function () {
+
+
+        if (
+            this.value.trim() !== ""
+        ) {
+
+            clearSearch.style.display =
+                "block";
+
+        }
+
+        else {
+
+            clearSearch.style.display =
+                "none";
+
+        }
+
+
+        applyFilters();
+
+    }
+
+);
+
+
+
+/* =========================================
+   CLEAR SEARCH
+========================================= */
+
+clearSearch.addEventListener(
+
+    "click",
+
+    function () {
+
+        searchInput.value = "";
+
+        clearSearch.style.display =
+            "none";
+
+        applyFilters();
+
+        searchInput.focus();
+
+    }
+
+);
+
+
+
+/* =========================================
+   GROUP BY
+========================================= */
+
+groupBy.addEventListener(
+
+    "change",
+
+    function () {
+
+        applyFilters();
+
+    }
+
+);
+
+
+
+/* =========================================
+   FILTER
+========================================= */
+
+filter.addEventListener(
+
+    "change",
+
+    function () {
+
+        applyFilters();
+
+    }
+
+);
+
+
+
+/* =========================================
+   SORT BY
+========================================= */
+
+sortBy.addEventListener(
+
+    "change",
+
+    function () {
+
+        applyFilters();
+
+    }
+
+);
+
+
+
+/* =========================================
+   DESTINATION CLICK
+========================================= */
+
+cards.forEach(card => {
+
+
+    card.addEventListener(
+
+        "click",
+
+        function () {
+
+
+            const city =
+                this.dataset.city;
+
+
+            const country =
+                this.dataset.country;
+
+
+            const region =
+                this.dataset.region;
+
+
+            document.getElementById(
+                "modalTitle"
+            ).textContent =
+
+                city + ", " +
+                country;
+
+
+            document.getElementById(
+                "modalDescription"
+            ).textContent =
+
+                "Explore " +
+                city +
+                " in " +
+                country +
+                ". This destination is located in " +
+                region +
+                " and is a great option for your next journey.";
+
+
+            document.getElementById(
+                "destinationModal"
+            ).classList.add(
+                "active"
+            );
+
+
+            document.getElementById(
+                "modalPlanButton"
+            ).onclick =
+
+                function () {
+
+                    window.location.href =
+                        "index.html";
+
+                };
+
+        }
+
+    );
+
+});
+
+
+
+/* =========================================
+   CLOSE MODAL
+========================================= */
+
+document.getElementById(
+    "modalClose"
+).addEventListener(
+
+    "click",
+
+    function () {
+
+        document.getElementById(
+            "destinationModal"
+        ).classList.remove(
+            "active"
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   CLOSE MODAL BY CLICKING OUTSIDE
+========================================= */
+
+document.getElementById(
+    "destinationModal"
+).addEventListener(
+
+    "click",
+
+    function(event) {
+
+        if (
+            event.target === this
+        ) {
+
+            this.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+
+);
+
+
+
+/* =========================================
+   PLAN A TRIP
+========================================= */
+
+planTripBtn.addEventListener(
+
+    "click",
+
+    function () {
+
+        window.location.href =
+            "index.html";
+
+    }
+
+);
+
+
+/* =========================================
+   INITIAL DISPLAY
+========================================= */
+
+applyFilters();
+
+</script>
+
+
+</body>
+
+</html>

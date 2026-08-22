@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GlobeTrotter | Account</title>
+
+    <link
+        rel="stylesheet"
+        href="signin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="auth-shell">
+
+
+    <!-- =========================================
+         LEFT BRAND / TRAVEL PANEL
+    ========================================== -->
+
+    <aside class="brand-panel">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                ✈
+            </div>
+
+            <span>
+                Globe<span>Trotter</span>
+            </span>
+
+        </div>
+
+
+        <div class="brand-copy">
+
+            <p class="eyebrow">
+                YOUR JOURNEY STARTS HERE
+            </p>
+
+            <h1>
+                Travel more.
+                <br>
+                <em>Plan smarter.</em>
+            </h1>
+
+            <p class="description">
+
+                Build unforgettable trips,
+                organize your itinerary and keep
+                every travel plan in one beautiful place.
+
+            </p>
+
+        </div>
+
+
+        <div class="travel-card">
+
+            <div class="mini-photo"></div>
+
+            <div>
+
+                <span class="mini-label">
+                    NEXT ADVENTURE
+                </span>
+
+                <strong>
+                    Make memories, not just plans.
+                </strong>
+
+            </div>
+
+            <span class="arrow">
+                ↗
+            </span>
+
+        </div>
+
+
+        <div class="trust-row">
+
+            <span>
+                ✓ Personalized itineraries
+            </span>
+
+            <span>
+                ✓ Easy trip planning
+            </span>
+
+            <span>
+                ✓ Your trips, one place
+            </span>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         RIGHT AUTH PANEL
+    ========================================== -->
+
+    <main class="auth-panel">
+
+
+        <!-- =====================================
+             LOGIN SCREEN
+        ====================================== -->
+
+        <section
+            id="loginScreen"
+            class="screen active"
+        >
+
+            <div class="mobile-brand">
+
+                ✈ Globe<span>Trotter</span>
+
+            </div>
+
+
+            <div class="heading">
+
+                <span class="step">
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    Let's continue your journey.
+                </h2>
+
+                <p>
+                    Sign in to access your trips
+                    and itinerary.
+                </p>
+
+            </div>
+
+
+            <div
+                id="loginMessage"
+                class="message"
+            ></div>
+
+
+            <form
+                id="loginForm"
+                class="form"
+                novalidate
+            >
+
+
+                <!-- USERNAME -->
+
+                <div class="field">
+
+                    <label for="loginIdentity">
+                        Email or Username
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            ◉
+                        </span>
+
+                        <input
+                            id="loginIdentity"
+                            type="text"
+                            placeholder="you@example.com"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                    <small
+                        class="error"
+                        id="loginIdentityError"
+                    ></small>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="field">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            ●
+                        </span>
+
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            class="eye"
+                            type="button"
+                            onclick="togglePassword(
+                                'loginPassword',
+                                this
+                            )"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <small
+                        class="error"
+                        id="loginPasswordError"
+                    ></small>
+
+                </div>
+
+
+                <!-- REMEMBER + FORGOT -->
+
+                <div class="form-row">
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        class="text-button"
+                        onclick="showForgot()"
+                    >
+                        Forgot password?
+                    </button>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    class="primary-btn"
+                    type="submit"
+                >
+
+                    Sign In
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <!-- DIVIDER -->
+
+            <div class="divider">
+
+                <span>
+                    or
+                </span>
+
+            </div>
+
+
+            <!-- GOOGLE -->
+
+            <button
+                class="social-btn"
+                type="button"
+                onclick="demoSocial('Google')"
+            >
+
+                <span class="google">
+                    G
+                </span>
+
+                Continue with Google
+
+            </button>
+
+
+            <!-- REGISTER LINK -->
+
+            <p class="switch-text">
+
+                Don't have an account?
+
+                <button
+                    class="text-button"
+                    onclick="showRegister()"
+                >
+                    Create account
+                </button>
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             REGISTRATION SCREEN
+        ====================================== -->
+
+       <!-- =====================================
+     REGISTRATION SCREEN
+====================================== -->
+
+<section
+    id="registerScreen"
+    class="screen"
+>
+
+    <div class="mobile-brand">
+        ✈ Globe<span>Trotter</span>
+    </div>
+
+
+    <div class="heading">
+
+        <span class="step">
+            CREATE ACCOUNT
+        </span>
+
+        <h2>
+            Start planning your next adventure.
+        </h2>
+
+        <p>
+            Create your GlobeTrotter account
+            in less than a minute.
+        </p>
+
+    </div>
+
+
+    <div
+        id="registerMessage"
+        class="message"
+    ></div>
+
+
+    <form
+        id="registerForm"
+        class="form"
+        novalidate
+    >
+
+
+        <!-- =================================
+             FIRST NAME + LAST NAME
+        ================================== -->
+
+        <div class="two-col">
+
+            <div class="field">
+
+                <label for="firstName">
+                    First Name
+                </label>
+
+                <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="Siddhi"
+                    autocomplete="given-name"
+                    required
+                >
+
+                <small
+                    class="error"
+                    id="firstNameError"
+                ></small>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="lastName">
+                    Last Name
+                </label>
+
+                <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Kshirsagar"
+                    autocomplete="family-name"
+                    required
+                >
+
+                <small
+                    class="error"
+                    id="lastNameError"
+                ></small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             EMAIL + USERNAME
+        ================================== -->
+
+        <div class="two-col">
+
+            <div class="field">
+
+                <label for="registerEmail">
+                    Email
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        id="registerEmail"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <small
+                    class="error"
+                    id="registerEmailError"
+                ></small>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="registerUsername">
+                    Username
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ◉
+                    </span>
+
+                    <input
+                        id="registerUsername"
+                        name="username"
+                        type="text"
+                        placeholder="Choose a username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+                <small
+                    class="error"
+                    id="registerUsernameError"
+                ></small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             PHONE NUMBER + CITY
+        ================================== -->
+
+        <div class="two-col">
+
+            <div class="field">
+
+                <label for="phoneNumber">
+                    Phone Number
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ☎
+                    </span>
+
+                    <input
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        type="tel"
+                        placeholder="+91 98765 43210"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+                <small
+                    class="error"
+                    id="phoneNumberError"
+                ></small>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="city">
+                    City
+                </label>
+
+                <input
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="Pune"
+                    autocomplete="address-level2"
+                    required
+                >
+
+                <small
+                    class="error"
+                    id="cityError"
+                ></small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             COUNTRY
+        ================================== -->
+
+        <div class="field">
+
+            <label for="country">
+                Country
+            </label>
+
+            <input
+                id="country"
+                name="country"
+                type="text"
+                placeholder="India"
+                autocomplete="country-name"
+                required
+            >
+
+            <small
+                class="error"
+                id="countryError"
+            ></small>
+
+        </div>
+
+
+        <!-- =================================
+             ADDITIONAL INFORMATION
+        ================================== -->
+
+        <div class="field">
+
+            <label for="additionalInfo">
+                Additional Information
+            </label>
+
+            <textarea
+                id="additionalInfo"
+                name="additionalInfo"
+                placeholder="Tell us anything you'd like to add..."
+                rows="4"
+            ></textarea>
+
+            <small
+                class="hint"
+            >
+                Optional
+            </small>
+
+        </div>
+
+
+        <!-- =================================
+             PASSWORD + CONFIRM PASSWORD
+        ================================== -->
+
+        <div class="two-col">
+
+            <!-- PASSWORD -->
+
+            <div class="field">
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ●
+                    </span>
+
+                    <input
+                        id="registerPassword"
+                        name="password"
+                        type="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        class="eye"
+                        type="button"
+                        onclick="togglePassword(
+                            'registerPassword',
+                            this
+                        )"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+
+                <!-- PASSWORD STRENGTH -->
+
+                <div class="strength">
+
+                    <div
+                        id="strengthBar"
+                    ></div>
+
+                </div>
+
+
+                <small
+                    id="strengthText"
+                    class="hint"
+                >
+                    Use 8+ characters
+                    with a number and symbol.
+                </small>
+
+
+                <small
+                    class="error"
+                    id="registerPasswordError"
+                ></small>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="field">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        ●
+                    </span>
+
+                    <input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        class="eye"
+                        type="button"
+                        onclick="togglePassword(
+                            'confirmPassword',
+                            this
+                        )"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+                <small
+                    class="error"
+                    id="confirmPasswordError"
+                ></small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             TERMS & PRIVACY
+        ================================== -->
+
+        <label class="check terms">
+
+            <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                required
+            >
+
+            <span>
+
+                I agree to the
+
+                <a href="#">
+                    Terms
+                </a>
+
+                and
+
+                <a href="#">
+                    Privacy Policy
+                </a>.
+
+            </span>
+
+        </label>
+
+
+        <!-- =================================
+             CREATE ACCOUNT BUTTON
+        ================================== -->
+
+        <button
+            class="primary-btn"
+            type="submit"
+        >
+
+            Create Account
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+    </form>
+
+
+    <!-- =================================
+         LOGIN LINK
+    ================================== -->
+
+    <p class="switch-text">
+
+        Already have an account?
+
+        <button
+            class="text-button"
+            onclick="showLogin()"
+        >
+            Sign in
+        </button>
+
+    </p>
+
+
+</section>
+
+
+
+        <!-- =====================================
+             FORGOT PASSWORD SCREEN
+        ====================================== -->
+
+        <section
+            id="forgotScreen"
+            class="screen"
+        >
+
+
+            <div class="back-link">
+
+                <button
+                    class="text-button"
+                    onclick="showLogin()"
+                >
+                    ← Back to sign in
+                </button>
+
+            </div>
+
+
+            <div class="recovery-icon">
+                ✦
+            </div>
+
+
+            <div class="heading">
+
+                <span class="step">
+                    ACCOUNT RECOVERY
+                </span>
+
+                <h2>
+                    Forgot your password?
+                </h2>
+
+                <p>
+
+                    Enter the email connected to
+                    your GlobeTrotter account and
+                    we'll send you a reset link.
+
+                </p>
+
+            </div>
+
+
+            <div
+                id="forgotMessage"
+                class="message"
+            ></div>
+
+
+            <form
+                id="forgotForm"
+                class="form"
+                novalidate
+            >
+
+
+                <div class="field">
+
+                    <label for="forgotEmail">
+                        Email address
+                    </label>
+
+                    <div class="input-wrap">
+
+                        <span class="input-icon">
+                            @
+                        </span>
+
+                        <input
+                            id="forgotEmail"
+                            type="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                    <small
+                        class="error"
+                        id="forgotEmailError"
+                    ></small>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    type="submit"
+                >
+
+                    Send Reset Link
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <div class="recovery-note">
+
+                <span>
+                    🔒
+                </span>
+
+                <p>
+
+                    For your security, we never reveal
+                    whether an email is registered.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+             RESET SUCCESS SCREEN
+        ====================================== -->
+
+        <section
+            id="successScreen"
+            class="screen"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <div class="heading centered">
+
+                <span class="step">
+                    CHECK YOUR INBOX
+                </span>
+
+                <h2>
+                    Reset link sent.
+                </h2>
+
+                <p>
+
+                    If an account exists for that email,
+                    we've sent instructions to reset
+                    your password.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="showLogin()"
+            >
+
+                Back to Sign In
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="text-button center-button"
+                onclick="showForgot()"
+            >
+
+                Didn't receive it?
+                Try again
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
