@@ -1,1 +1,0 @@
-// Saved destination model placeholder.

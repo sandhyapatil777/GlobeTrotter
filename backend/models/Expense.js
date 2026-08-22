@@ -1,1 +1,0 @@
-// Expense model placeholder.
