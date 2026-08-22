@@ -1,40 +1,90 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>GlobeTrotter | Plan Your Trip</title>
 
-    <link rel="stylesheet" href="index.css">
+    <link
+        rel="stylesheet"
+        href="index.css"
+    >
+
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVBAR ================= -->
 
 <nav class="navbar">
 
     <div class="logo">
+
         Globe<span>Trotter</span>
+
         <span class="plane">✈</span>
+
     </div>
+
 
     <div class="nav-links">
-        <a href="#" class="active">Explore</a>
-        <a href="#trips">My Trips</a>
-        <a href="#destinations">Destinations</a>
-        <a href="#itinerary">Itinerary</a>
+
+        <!-- EXPLORE -->
+
+        <a
+            href="index.html"
+            class="active"
+        >
+            Explore
+        </a>
+
+
+        <!-- MY TRIPS -->
+
+        <a href="trips.html">
+            My Trips
+        </a>
+
+
+        <!-- DESTINATIONS -->
+
+        <a href="index.html#destinations">
+            Destinations
+        </a>
+
+
+        <!-- ITINERARY -->
+
+        <a href="index.html#itinerary">
+            Itinerary
+        </a>
+
     </div>
 
+
     <div class="user-section">
-        <span>Siddhi</span>
-        <div class="user-avatar">S</div>
+
+        <span>
+            Siddhi
+        </span>
+
+        <div class="user-avatar">
+            S
+        </div>
+
     </div>
 
 </nav>
+
 
 
 <!-- ================= HERO SECTION ================= -->
@@ -47,15 +97,24 @@
             YOUR JOURNEY STARTS HERE
         </span>
 
+
         <h1>
+
             Plan your next
-            <span>adventure.</span>
+
+            <span>
+                adventure.
+            </span>
+
         </h1>
 
+
         <p>
+
             Create personalized travel itineraries,
             discover amazing destinations and organize
             your entire journey in one place.
+
         </p>
 
     </div>
@@ -63,87 +122,72 @@
 </section>
 
 
-<!-- ================= TRIP PLANNER ================= -->
+
+<!-- ================= CREATE TRIP ================= -->
 
 <main class="container">
 
-    <section class="planner">
 
-        <div class="input-group">
+    <section class="create-trip-section">
 
-            <label>Destination</label>
+        <div class="create-trip-content">
 
-            <input
-                type="text"
-                id="destination"
-                placeholder="Where do you want to go?"
+            <div>
+
+                <h2>
+                    Ready to plan your journey?
+                </h2>
+
+                <p>
+                    Create a personalized trip based on
+                    your destination, dates, budget and interests.
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn create-trip-btn"
+                onclick="openCustomTrip()"
             >
 
-        </div>
+                + Create a Trip
 
-
-        <div class="input-group">
-
-            <label>Start Date</label>
-
-            <input
-                type="date"
-                id="startDate"
-            >
+            </button>
 
         </div>
-
-
-        <div class="input-group">
-
-            <label>End Date</label>
-
-            <input
-                type="date"
-                id="endDate"
-            >
-
-        </div>
-
-
-        <button
-            class="primary-btn"
-            onclick="createTrip()"
-        >
-            Create Trip
-        </button>
 
     </section>
+
 
 
     <!-- ================= DESTINATIONS ================= -->
 
     <section id="destinations">
 
+
         <div class="section-header">
 
             <div>
-                <h2>Popular Destinations</h2>
+
+                <h2>
+                    Popular Destinations
+                </h2>
 
                 <p>
                     Get inspired for your next adventure.
                 </p>
+
             </div>
 
-            <button
-                class="outline-btn"
-                onclick="openCustomTrip()"
-            >
-                + Custom Itinerary
-            </button>
-
         </div>
+
 
 
         <div class="destination-grid">
 
 
-            <!-- PARIS -->
+            <!-- ================= PARIS ================= -->
 
             <div
                 class="destination-card"
@@ -160,17 +204,23 @@
 
                 </div>
 
+
                 <div class="card-content">
 
-                    <h3>Paris</h3>
+                    <h3>
+                        Paris
+                    </h3>
 
                     <p>
                         🇫🇷 France · Europe
                     </p>
 
+
                     <div class="card-bottom">
 
-                        <span>4–7 days</span>
+                        <span>
+                            4–7 days
+                        </span>
 
                         <strong>
                             From ₹75k
@@ -183,7 +233,8 @@
             </div>
 
 
-            <!-- BALI -->
+
+            <!-- ================= BALI ================= -->
 
             <div
                 class="destination-card"
@@ -200,17 +251,23 @@
 
                 </div>
 
+
                 <div class="card-content">
 
-                    <h3>Bali</h3>
+                    <h3>
+                        Bali
+                    </h3>
 
                     <p>
                         🇮🇩 Indonesia · Asia
                     </p>
 
+
                     <div class="card-bottom">
 
-                        <span>5–8 days</span>
+                        <span>
+                            5–8 days
+                        </span>
 
                         <strong>
                             From ₹45k
@@ -223,7 +280,8 @@
             </div>
 
 
-            <!-- TOKYO -->
+
+            <!-- ================= TOKYO ================= -->
 
             <div
                 class="destination-card"
@@ -240,17 +298,23 @@
 
                 </div>
 
+
                 <div class="card-content">
 
-                    <h3>Tokyo</h3>
+                    <h3>
+                        Tokyo
+                    </h3>
 
                     <p>
                         🇯🇵 Japan · Asia
                     </p>
 
+
                     <div class="card-bottom">
 
-                        <span>6–9 days</span>
+                        <span>
+                            6–9 days
+                        </span>
 
                         <strong>
                             From ₹90k
@@ -267,54 +331,8 @@
 
     </section>
 
-
-    <!-- ================= ITINERARY ================= -->
-
-    <section id="itinerary">
-
-        <div class="section-header">
-
-            <div>
-
-                <h2>Your Itinerary</h2>
-
-                <p id="tripSubtitle">
-                    Create a trip to start planning.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div
-            id="itineraryContainer"
-            class="itinerary-container"
-        >
-
-            <div class="empty-itinerary">
-
-                <div class="empty-icon">
-                    ✈
-                </div>
-
-                <h3>
-                    No itinerary yet
-                </h3>
-
-                <p>
-                    Enter a destination and travel dates
-                    above to create your itinerary.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
 </main>
+
 
 
 <!-- ================= CUSTOM TRIP MODAL ================= -->
@@ -325,6 +343,9 @@
 >
 
     <div class="modal-content">
+
+
+        <!-- MODAL HEADER -->
 
         <div class="modal-header">
 
@@ -340,23 +361,35 @@
 
             </div>
 
+
             <button
                 class="close-btn"
                 onclick="closeCustomTrip()"
             >
+
                 ×
+
             </button>
 
         </div>
 
 
+
+        <!-- ================= FORM ================= -->
+
         <div class="form-grid">
+
+
+            <!-- DESTINATION -->
 
             <div class="input-group">
 
-                <label>Destination</label>
+                <label>
+                    Destination
+                </label>
 
                 <input
+                    type="text"
                     id="customDestination"
                     placeholder="e.g. Switzerland"
                 >
@@ -364,29 +397,34 @@
             </div>
 
 
+
+            <!-- TRAVEL STYLE -->
+
             <div class="input-group">
 
-                <label>Travel Style</label>
+                <label>
+                    Travel Style
+                </label>
 
                 <select id="travelStyle">
 
-                    <option>
+                    <option value="Relaxed">
                         Relaxed
                     </option>
 
-                    <option>
+                    <option value="Adventure">
                         Adventure
                     </option>
 
-                    <option>
+                    <option value="Culture & Food">
                         Culture & Food
                     </option>
 
-                    <option>
+                    <option value="Budget">
                         Budget
                     </option>
 
-                    <option>
+                    <option value="Luxury">
                         Luxury
                     </option>
 
@@ -395,9 +433,14 @@
             </div>
 
 
+
+            <!-- START DATE -->
+
             <div class="input-group">
 
-                <label>Start Date</label>
+                <label>
+                    Start Date
+                </label>
 
                 <input
                     type="date"
@@ -407,9 +450,14 @@
             </div>
 
 
+
+            <!-- END DATE -->
+
             <div class="input-group">
 
-                <label>End Date</label>
+                <label>
+                    End Date
+                </label>
 
                 <input
                     type="date"
@@ -418,6 +466,28 @@
 
             </div>
 
+
+
+            <!-- BUDGET -->
+
+            <div class="input-group">
+
+                <label>
+                    Budget
+                </label>
+
+                <input
+                    type="number"
+                    id="customBudget"
+                    placeholder="₹ e.g. 50000"
+                    min="0"
+                >
+
+            </div>
+
+
+
+            <!-- INTERESTS -->
 
             <div class="input-group full">
 
@@ -432,19 +502,27 @@
 
             </div>
 
+
         </div>
 
+
+
+        <!-- GENERATE BUTTON -->
 
         <button
             class="primary-btn full-btn"
             onclick="generateCustomTrip()"
         >
-            Generate Itinerary →
+
+            Generate Trip →
+
         </button>
+
 
     </div>
 
 </div>
+
 
 
 <!-- ================= TOAST ================= -->
@@ -456,7 +534,12 @@
 </div>
 
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>

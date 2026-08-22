@@ -769,23 +769,12 @@ section:not(.hero) {
 ================================ */
 
 .modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(10,25,45,.55);
-
     display: none;
-
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
     align-items: center;
-
     justify-content: center;
-
-    padding: 20px;
-
-    z-index: 500;
 }
 
 
@@ -976,4 +965,1098 @@ textarea {
         grid-template-columns:
             70px 1fr;
     }
+}
+/* =========================================
+   TRIP SUMMARY
+========================================= */
+
+.trip-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e8e8e8;
+}
+
+.summary-label {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trip-summary strong {
+    font-size: 18px;
+}
+
+
+/* =========================================
+   ITINERARY CARD
+========================================= */
+
+.itinerary-card {
+    background: #ffffff;
+    border: 1px solid #e7e7e7;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.25s ease;
+}
+
+.itinerary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.itinerary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.section-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+.itinerary-card-header h3 {
+    margin: 7px 0 0;
+    font-size: 23px;
+}
+
+
+/* =========================================
+   SECTION INFO
+========================================= */
+
+.section-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-info {
+    background: #f8f8f8;
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.info-label {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.section-info strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.section-details,
+.section-notes {
+    padding: 18px;
+    margin-top: 15px;
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+.section-details h4,
+.section-notes h4 {
+    margin: 0 0 8px;
+}
+
+.section-details p,
+.section-notes p {
+    margin: 0;
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.delete-section-btn {
+    border: none;
+    background: transparent;
+    color: #d9534f;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.delete-section-btn:hover {
+    text-decoration: underline;
+}
+
+.edit-section-btn {
+    margin-top: 20px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+}
+
+.edit-section-btn:hover {
+    background: #f5f5f5;
+}
+
+
+/* =========================================
+   ADD SECTION
+========================================= */
+
+.add-section-area {
+    text-align: center;
+    margin: 35px 0 60px;
+}
+
+.add-section-btn {
+    padding: 15px 28px;
+    border-radius: 30px;
+    border: 2px dashed #aaa;
+    background: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.add-section-btn:hover {
+    border-style: solid;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MY TRIP CARD
+========================================= */
+
+.my-trip-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 25px;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 25px;
+}
+
+.trip-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.my-trip-card h3 {
+    margin: 7px 0;
+    font-size: 22px;
+}
+
+.my-trip-card p {
+    margin: 0;
+    color: #777;
+}
+
+.my-trip-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.my-trip-stats span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+}
+
+.my-trip-stats strong {
+    display: block;
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: min(750px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 22px;
+    padding: 30px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    margin: 0 0 5px;
+}
+
+.modal-header p {
+    margin: 0;
+    color: #777;
+}
+
+.close-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: #f2f2f2;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.input-group.full {
+    grid-column: 1 / -1;
+}
+
+.input-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.full-btn {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #222;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 10000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .trip-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .section-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .my-trip-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .my-trip-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group.full {
+        grid-column: auto;
+    }
+
+}
+
+
+.modal {
+    display: none;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* =========================================
+   GENERATED ITINERARY
+========================================= */
+
+.itinerary-container {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   ITINERARY SUMMARY
+========================================= */
+
+.itinerary-summary {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 18px;
+
+    padding: 22px 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.summary-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f6ff;
+
+    border-radius: 14px;
+
+    font-size: 25px;
+}
+
+
+.itinerary-summary h3 {
+    margin: 0 0 5px;
+
+    font-size: 22px;
+
+    color: #222;
+}
+
+
+.itinerary-summary p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ITINERARY DAYS
+========================================= */
+
+.itinerary-days {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   EACH DAY
+========================================= */
+
+.itinerary-day {
+    display: flex;
+
+    gap: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+.itinerary-day:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   DAY NUMBER
+========================================= */
+
+.day-number {
+    min-width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   DAY CONTENT
+========================================= */
+
+.day-content {
+    flex: 1;
+}
+
+
+.day-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.day-header h3 {
+    margin: 0 0 4px;
+
+    font-size: 19px;
+
+    color: #222;
+}
+
+
+.day-date {
+    font-size: 13px;
+
+    color: #888;
+}
+
+
+/* =========================================
+   TRIP TYPE
+========================================= */
+
+.trip-type {
+    background: #f1f6ff;
+
+    color: #3563e9;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ACTIVITIES
+========================================= */
+
+.activities {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.activity {
+    background: #f8f9fb;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 10px;
+
+    padding: 12px 15px;
+
+    color: #444;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    transition: background 0.2s ease;
+}
+
+
+.activity:hover {
+    background: #f1f3f6;
+}
+
+
+/* =========================================
+   EMPTY ITINERARY
+========================================= */
+
+.empty-itinerary {
+    background: #ffffff;
+
+    border: 1px dashed #d8d8d8;
+
+    border-radius: 18px;
+
+    padding: 50px 25px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+.empty-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 15px;
+
+    background: #f1f6ff;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+
+.empty-itinerary h3 {
+    margin: 0 0 8px;
+
+    color: #333;
+
+    font-size: 20px;
+}
+
+
+.empty-itinerary p {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .itinerary-day {
+        padding: 16px;
+
+        gap: 12px;
+    }
+
+
+    .day-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .trip-type {
+        align-self: flex-start;
+    }
+
+
+    .itinerary-summary {
+        padding: 18px;
+    }
+
+
+    .summary-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 20px;
+    }
+
+
+    .itinerary-summary h3 {
+        font-size: 18px;
+    }
+
+
+    .day-number {
+        min-width: 40px;
+        height: 40px;
+
+        font-size: 15px;
+    }
+
+}
+
+/* =========================================
+   CREATE TRIP SECTION
+========================================= */
+
+.create-trip-section {
+
+    margin: 40px 0;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+}
+
+
+.create-trip-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+}
+
+
+.create-trip-content h2 {
+
+    margin: 0 0 8px;
+
+}
+
+
+.create-trip-content p {
+
+    margin: 0;
+
+    color: #6b7280;
+
+}
+
+
+.create-trip-btn {
+
+    white-space: nowrap;
+
+}
+
+
+
+/* =========================================
+   TRIP CARDS
+========================================= */
+
+.trips-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 25px;
+
+    margin-top: 30px;
+
+}
+
+
+.trip-card {
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+
+}
+
+
+.trip-card-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.trip-card-header h2 {
+
+    margin: 0 0 8px;
+
+}
+
+
+.trip-icon {
+
+    font-size: 30px;
+
+}
+
+
+.trip-style {
+
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+
+    font-size: 13px;
+
+}
+
+
+.trip-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+.trip-detail {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.trip-detail strong {
+
+    font-size: 14px;
+
+}
+
+
+.trip-detail span {
+
+    color: #6b7280;
+
+    line-height: 1.5;
+
+}
+
+
+.trip-card-footer {
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+
+}
+
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+.modal.show {
+
+    display: flex;
+
+}
+
+
+.modal-content {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+}
+
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+
+}
+
+
+.close-btn {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.input-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.input-group.full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+}
+
+
+.input-group textarea {
+
+    min-height: 100px;
+
+    resize: vertical;
+
+}
+
+
+.full-btn {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+}
+
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .create-trip-content {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .create-trip-btn {
+
+        width: 100%;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .input-group.full {
+
+        grid-column: auto;
+
+    }
+
 }
