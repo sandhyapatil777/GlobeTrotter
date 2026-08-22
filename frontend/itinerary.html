@@ -1548,14 +1548,73 @@
                 onclick="addStop()"
             >
 
-                + Add Stop
+                + Add trip
 
             </button>
 
         </div>
 
 
+<!-- =========================================================
+     CURRENT TRIP HEADER
+========================================================= -->
 
+<div id="currentTripHeader" style="
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+">
+
+    <div>
+        <div style="
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 8px;
+        ">
+            CURRENT TRIP
+        </div>
+
+        <h1 id="currentTripTitle" style="
+            margin: 0;
+            font-size: 38px;
+            color: #111827;
+        ">
+            ✈️ My Trip
+        </h1>
+
+        <p id="currentTripDates" style="
+            margin: 10px 0 0;
+            font-size: 17px;
+            color: #666;
+        ">
+            Loading trip details...
+        </p>
+    </div>
+
+    <div style="text-align: right;">
+        <div style="
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 8px;
+        ">
+            TRIP BUDGET
+        </div>
+
+        <strong id="currentTripBudget" style="
+            font-size: 26px;
+            color: #111827;
+        ">
+            ₹0
+        </strong>
+    </div>
+
+</div>
         <!-- =================================================
              TRIP INFORMATION
         ================================================== -->
@@ -1973,14 +2032,9 @@
 
         <div class="itinerary-actions">
 
-            <button
-                class="primary-btn"
-                onclick="saveItinerary()"
-            >
-
-                Save Itinerary
-
-            </button>
+           <button onclick="openBudgetScreen()">
+    💰 Budget & Cost
+</button>
 
 
             <button

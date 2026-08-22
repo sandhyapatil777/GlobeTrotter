@@ -1,27 +1,7 @@
-/* =========================================================
-   GLOBETROTTER - COMPLETE JAVASCRIPT
-
-   AUTHENTICATION
-   TRIP CREATION
-   ITINERARY BUILDER
-   ADD STOPS
-   CITY + DATES
-   ACTIVITIES
-   ACTIVITY DATE
-   ACTIVITY TIME
-   ACTIVITY COST
-   REORDER STOPS
-   SAVE ITINERARY
-   MY TRIPS
-   VIEW COMPLETE ITINERARY
-   LIST / CALENDAR VIEW
-========================================================= */
-
 
 /* =========================================================
    AUTHENTICATION
 ========================================================= */
-
 const screens = {
 
     login:
@@ -37,8 +17,6 @@ const screens = {
         document.getElementById("successScreen")
 
 };
-
-
 /* =========================================================
    SCREEN FUNCTIONS
 ========================================================= */
@@ -114,8 +92,6 @@ function clearMessages() {
         });
 
 }
-
-
 /* =========================================================
    ERROR FUNCTIONS
 ========================================================= */
@@ -138,7 +114,6 @@ function setError(inputId, errorId, message) {
 
 }
 
-
 function clearError(inputId, errorId) {
 
     const input =
@@ -156,7 +131,6 @@ function clearError(inputId, errorId) {
     }
 
 }
-
 
 /* =========================================================
    MESSAGE
@@ -2329,13 +2303,11 @@ function loadItineraryBuilder() {
     const trip =
         getSelectedTrip();
 
-
     if (!trip) {
 
         showToast(
             "No trip selected."
         );
-
 
         setTimeout(
             function() {
@@ -2347,11 +2319,11 @@ function loadItineraryBuilder() {
             1000
         );
 
-
         return;
-
     }
 
+    // SHOW THE ACTUAL SELECTED TRIP
+    renderCurrentTripHeader(trip);
 
     if (
         !trip.stops ||
@@ -2359,11 +2331,8 @@ function loadItineraryBuilder() {
     ) {
 
         trip.stops = [
-
             {
-
-                id:
-                    Date.now(),
+                id: Date.now(),
 
                 city:
                     trip.destination || "",
@@ -2374,13 +2343,9 @@ function loadItineraryBuilder() {
                 endDate:
                     trip.endDate || "",
 
-                activities:
-                    []
-
+                activities: []
             }
-
         ];
-
     }
 
 
@@ -2396,42 +2361,164 @@ function loadItineraryBuilder() {
     saveCurrentTrip(trip);
 
 
-    const title =
-        document.getElementById(
-            "itineraryTitle"
+   const title =
+    document.getElementById(
+        "itineraryTitle"
+    );
+
+const subtitle =
+    document.getElementById(
+        "itinerarySubtitle"
+    );
+
+const information =
+    document.getElementById(
+        "tripInformation"
+    );
+
+
+/* =========================================================
+   OLD ITINERARY HEADER
+========================================================= */
+
+if (title) {
+
+    title.textContent =
+        trip.destination;
+}
+
+
+if (subtitle) {
+
+    const tripDays =
+        trip.days ||
+        (
+            trip.startDate &&
+            trip.endDate
+                ? calculateDays(
+                    trip.startDate,
+                    trip.endDate
+                )
+                : 0
         );
 
+    subtitle.textContent =
+        `${formatDate(
+            trip.startDate
+        )} → ${formatDate(
+            trip.endDate
+        )} · ${tripDays} days`;
 
-    const subtitle =
-        document.getElementById(
-            "itinerarySubtitle"
+    trip.days = tripDays;
+}
+
+
+/* =========================================================
+   CURRENT TRIP CARD
+========================================================= */
+
+const currentTripTitle =
+    document.getElementById(
+        "currentTripTitle"
+    );
+
+const currentTripDates =
+    document.getElementById(
+        "currentTripDates"
+    );
+
+const currentTripBudget =
+    document.getElementById(
+        "currentTripBudget"
+    );
+
+
+/* TRIP NAME */
+
+if (currentTripTitle) {
+
+    currentTripTitle.textContent =
+        "✈️ " +
+        (
+            trip.destination ||
+            "My Trip"
+        );
+}
+
+
+/* TRIP DATES */
+
+if (currentTripDates) {
+
+    const tripDays =
+        trip.days ||
+        (
+            trip.startDate &&
+            trip.endDate
+                ? calculateDays(
+                    trip.startDate,
+                    trip.endDate
+                )
+                : 0
         );
 
+    currentTripDates.textContent =
+        (
+            trip.startDate
+                ? formatDate(
+                    trip.startDate
+                )
+                : "Start date not set"
+        )
+        +
+        " → "
+        +
+        (
+            trip.endDate
+                ? formatDate(
+                    trip.endDate
+                )
+                : "End date not set"
+        )
+        +
+        " · "
+        +
+        tripDays
+        +
+        " days";
+}
 
-    const information =
-        document.getElementById(
-            "tripInformation"
+
+/* TRIP BUDGET */
+
+if (currentTripBudget) {
+
+    currentTripBudget.textContent =
+        "₹" +
+        Number(
+            trip.budget || 0
+        ).toLocaleString(
+            "en-IN"
         );
+}
+/* =========================================================
+   CURRENT TRIP HEADER
+========================================================= */
 
+const currentTripTitle =
+    document.getElementById(
+        "currentTripTitle"
+    );
 
-    if (title) {
+const currentTripDates =
+    document.getElementById(
+        "currentTripDates"
+    );
 
-        title.textContent =
-            trip.destination;
-
-    }
-
-
-    if (subtitle) {
-
-        subtitle.textContent =
-            `${formatDate(
-                trip.startDate
-            )} → ${formatDate(
-                trip.endDate
-            )} · ${trip.days} days`;
-
-    }
+const currentTripBudget =
+    document.getElementById(
+        "currentTripBudget"
+    );
 
 
     if (information) {
@@ -2508,6 +2595,10 @@ function loadItineraryBuilder() {
    RENDER STOPS
 ========================================================= */
 
+/* =========================================================
+   RENDER STOPS
+========================================================= */
+
 function renderStops(stops) {
 
     const container =
@@ -2515,14 +2606,11 @@ function renderStops(stops) {
             "stopsContainer"
         );
 
-
     if (!container) {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     stops.forEach(
         function(stop, index) {
@@ -2535,10 +2623,8 @@ function renderStops(stops) {
                     "div"
                 );
 
-
             stopElement.className =
                 "itinerary-stop";
-
 
             stopElement.dataset.id =
                 stop.id;
@@ -2665,6 +2751,84 @@ function renderStops(stops) {
                     </div>
 
 
+                    <!-- TRANSPORT COST -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Transport Cost (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value="${Number(
+                                stop.transportCost || 0
+                            )}"
+                            onchange="updateStopCost(
+                                ${stop.id},
+                                'transportCost',
+                                this.value
+                            )"
+                            placeholder="e.g. 2000"
+                        >
+
+                    </div>
+
+
+                    <!-- STAY COST -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Stay Cost (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value="${Number(
+                                stop.stayCost || 0
+                            )}"
+                            onchange="updateStopCost(
+                                ${stop.id},
+                                'stayCost',
+                                this.value
+                            )"
+                            placeholder="e.g. 3000"
+                        >
+
+                    </div>
+
+
+                    <!-- MEAL COST -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Meal Cost (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value="${Number(
+                                stop.mealCost || 0
+                            )}"
+                            onchange="updateStopCost(
+                                ${stop.id},
+                                'mealCost',
+                                this.value
+                            )"
+                            placeholder="e.g. 1500"
+                        >
+
+                    </div>
+
+
                     <!-- ACTIVITIES -->
 
                     <div class="activities-section">
@@ -2723,6 +2887,7 @@ function renderStops(stops) {
                                                     activity.name
                                                 )}
                                             </span>
+
 
                                             <span class="activity-meta">
 
@@ -2783,7 +2948,73 @@ function renderStops(stops) {
     );
 
 }
+ 
+/* =========================================================
+   UPDATE STOP COST
+========================================================= */
 
+function updateStopCost(
+    id,
+    field,
+    value
+) {
+
+    const trip =
+        getSelectedTrip();
+
+    if (
+        !trip ||
+        !trip.stops
+    ) {
+        return;
+    }
+
+
+    const allowedFields = [
+        "transportCost",
+        "stayCost",
+        "mealCost"
+    ];
+
+
+    if (
+        !allowedFields.includes(field)
+    ) {
+        return;
+    }
+
+
+    const stop =
+        trip.stops.find(
+            item =>
+                Number(item.id) ===
+                Number(id)
+        );
+
+
+    if (!stop) {
+        return;
+    }
+
+
+    stop[field] =
+        Math.max(
+            0,
+            Number(value) || 0
+        );
+
+
+    saveCurrentTrip(trip);
+
+    renderStops(
+        trip.stops
+    );
+
+    renderCalendarView(
+        trip
+    );
+
+}
 
 /* =========================================================
    RENDER ACTIVITY INPUTS
@@ -3410,11 +3641,17 @@ function updateStopDate(
    ADD STOP
 ========================================================= */
 
+/* =========================================================
+   ADD STOP
+========================================================= */
+
 function addStop() {
 
-    const trip =
-        getSelectedTrip();
+    console.log("ADD STOP BUTTON CLICKED");
 
+    const trip = getSelectedTrip();
+
+    console.log("Selected trip:", trip);
 
     if (!trip) {
 
@@ -3422,75 +3659,61 @@ function addStop() {
             "Trip could not be found."
         );
 
-        return;
+        console.error(
+            "No selected trip found."
+        );
 
+        return;
     }
 
-
-    if (!trip.stops) {
+    if (!Array.isArray(trip.stops)) {
         trip.stops = [];
     }
 
-
     const lastStop =
-        trip.stops[
-            trip.stops.length - 1
-        ];
-
+        trip.stops.length > 0
+            ? trip.stops[trip.stops.length - 1]
+            : null;
 
     const newStop = {
 
-        id:
-            Date.now(),
+        id: Date.now(),
 
-        city:
-            "",
+        city: "",
 
         startDate:
             lastStop &&
             lastStop.endDate
+                ? lastStop.endDate
+                : trip.startDate || "",
 
-                ?
+        endDate: "",
 
-                lastStop.endDate
+        transportCost: 0,
 
-                :
+        stayCost: 0,
 
-                trip.startDate,
+        mealCost: 0,
 
-        endDate:
-            "",
-
-        activities:
-            []
-
+        activities: []
     };
 
+    trip.stops.push(newStop);
 
-    trip.stops.push(
+    console.log(
+        "New stop added:",
         newStop
     );
 
+    saveCurrentTrip(trip);
 
-    saveCurrentTrip(
-        trip
-    );
+    renderStops(trip.stops);
 
-
-    renderStops(
-        trip.stops
-    );
-
-
-    renderCalendarView(
-        trip
-    );
-
+    renderCalendarView(trip);
 
     showToast(
         "New stop added. Enter the city, dates and activities."
     );
-
 }
 
 
@@ -8348,3 +8571,257 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================================
+   TRIP BUDGET & COST
+========================================================= */
+
+function calculateTripBudget() {
+
+    if (!currentItinerary) {
+        return;
+    }
+
+    let transport = 0;
+    let stay = 0;
+    let activities = 0;
+    let meals = 0;
+
+    let stops = currentItinerary.stops || [];
+
+    stops.forEach(stop => {
+
+        if (stop.transportCost) {
+            transport += Number(stop.transportCost);
+        }
+
+        if (stop.stayCost) {
+            stay += Number(stop.stayCost);
+        }
+
+        if (stop.mealCost) {
+            meals += Number(stop.mealCost);
+        }
+
+        if (stop.activities) {
+
+            stop.activities.forEach(activity => {
+
+                if (activity.cost) {
+                    activities += Number(activity.cost);
+                }
+
+            });
+
+        }
+
+    });
+
+    const totalCost =
+        transport +
+        stay +
+        activities +
+        meals;
+
+    const budget =
+        Number(currentItinerary.budget) || 0;
+
+    const startDate =
+        new Date(currentItinerary.startDate);
+
+    const endDate =
+        new Date(currentItinerary.endDate);
+
+    let days = 1;
+
+    if (
+        !isNaN(startDate) &&
+        !isNaN(endDate)
+    ) {
+
+        days =
+            Math.ceil(
+                (endDate - startDate) /
+                (1000 * 60 * 60 * 24)
+            ) + 1;
+
+    }
+
+    const averageCost =
+        totalCost / days;
+
+    const remaining =
+        budget - totalCost;
+
+    document.getElementById("totalBudget").textContent =
+        "₹" + budget.toLocaleString("en-IN");
+
+    document.getElementById("estimatedCost").textContent =
+        "₹" + totalCost.toLocaleString("en-IN");
+
+    document.getElementById("remainingBudget").textContent =
+        "₹" + remaining.toLocaleString("en-IN");
+
+    document.getElementById("averageCost").textContent =
+        "₹" + Math.round(averageCost).toLocaleString("en-IN");
+
+    document.getElementById("transportCost").textContent =
+        "₹" + transport.toLocaleString("en-IN");
+
+    document.getElementById("stayCost").textContent =
+        "₹" + stay.toLocaleString("en-IN");
+
+    document.getElementById("activityCost").textContent =
+        "₹" + activities.toLocaleString("en-IN");
+
+    document.getElementById("mealCost").textContent =
+        "₹" + meals.toLocaleString("en-IN");
+
+
+    const alertBox =
+        document.getElementById("budgetAlert");
+
+    if (budget === 0) {
+
+        alertBox.textContent =
+            "Set a trip budget to track your expenses.";
+
+        alertBox.className =
+            "budget-alert warning";
+
+    }
+    else if (totalCost > budget) {
+
+        alertBox.textContent =
+            "🔴 Trip Budget Exceeded by ₹" +
+            (totalCost - budget).toLocaleString("en-IN");
+
+        alertBox.className =
+            "budget-alert danger";
+
+    }
+    else {
+
+        alertBox.textContent =
+            "✓ You are within your trip budget. ₹" +
+            remaining.toLocaleString("en-IN") +
+            " remaining.";
+
+        alertBox.className =
+            "budget-alert safe";
+
+    }
+
+}
+function openBudgetScreen() {
+
+    calculateTripBudget();
+
+    const budgetScreen =
+        document.getElementById("budgetScreen");
+
+    if (budgetScreen) {
+
+        document
+            .querySelectorAll(".screen")
+            .forEach(screen => {
+                screen.classList.remove("active");
+            });
+
+        budgetScreen.classList.add("active");
+
+    }
+
+}
+
+/* =========================================================
+   DISPLAY CURRENT TRIP DETAILS
+========================================================= */
+
+/* =========================================================
+   CURRENT TRIP HEADER
+========================================================= */
+
+function renderCurrentTripHeader(trip) {
+
+    if (!trip) {
+        console.error("No current trip found.");
+        return;
+    }
+
+    const title =
+        document.getElementById("currentTripTitle");
+
+    const dates =
+        document.getElementById("currentTripDates");
+
+    const budget =
+        document.getElementById("currentTripBudget");
+
+    const destination =
+        trip.destination ||
+        (trip.stops &&
+            trip.stops.length > 0 &&
+            trip.stops[0].city) ||
+        "My Trip";
+
+    const startDate =
+        trip.startDate ||
+        (trip.stops &&
+            trip.stops.length > 0 &&
+            trip.stops[0].startDate);
+
+    const endDate =
+        trip.endDate ||
+        (trip.stops &&
+            trip.stops.length > 0 &&
+            trip.stops[trip.stops.length - 1].endDate);
+
+    let days = Number(trip.days);
+
+    if (
+        (!days || days <= 0) &&
+        startDate &&
+        endDate
+    ) {
+        days = calculateDays(
+            startDate,
+            endDate
+        );
+    }
+
+    if (title) {
+        title.textContent =
+            "✈️ " + destination;
+    }
+
+    if (dates) {
+
+        const formattedStart =
+            startDate
+                ? formatDate(startDate)
+                : "Start date not set";
+
+        const formattedEnd =
+            endDate
+                ? formatDate(endDate)
+                : "End date not set";
+
+        dates.textContent =
+            formattedStart +
+            " → " +
+            formattedEnd +
+            " · " +
+            (days || 0) +
+            " days";
+    }
+
+    if (budget) {
+
+        budget.textContent =
+            "₹" +
+            Number(
+                trip.budget || 0
+            ).toLocaleString("en-IN");
+    }
+}
