@@ -2,37 +2,172 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const connectDB = require("./config/db");
+
+// ============================================
+// ROUTES
+// ============================================
+
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const destinationRoutes = require("./routes/destinationRoutes");
+const tripRoutes = require("./routes/tripRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const stopRoutes = require("./routes/stopRoutes");
+const activityRoutes = require("./routes/activityRoutes");
+const itineraryActivityRoutes = require("./routes/itineraryActivityRoutes");
+const budgetRoutes = require("./routes/budgetRoutes");
+const expenseRoutes =
+    require("./routes/expenseRoutes");
+
+// ============================================
+// ENVIRONMENT VARIABLES
+// ============================================
+
 dotenv.config();
 
-const connectDB = require("./config/db");
+// ============================================
+// APP
+// ============================================
 
 const app = express();
 
+// ============================================
+// DATABASE CONNECTION
+// ============================================
+
 connectDB();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// ============================================
+// MIDDLEWARE
+// ============================================
 
-// Test route
+app.use(cors());
+
+app.use(express.json());
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+
+// ============================================
+// TEST ROUTE
+// ============================================
+
 app.get("/", (req, res) => {
-    res.json({
+    res.status(200).json({
         success: true,
         message: "GlobeTrotter Backend is running!"
     });
 });
 
-// ===============================
-// ROUTES
-// ===============================
+// ============================================
+// API ROUTES
+// ============================================
 
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/destinations", require("./routes/destinationRoutes"));
-app.use("/api/trips", require("./routes/tripRoutes"));
-app.use("/api/bookings", require("./routes/bookingRoutes"));
+// --------------------------------------------
+// Authentication
+// /api/auth/...
+// --------------------------------------------
 
-// 404
+app.use(
+    "/api/auth",
+    authRoutes
+);
+
+// --------------------------------------------
+// User Profile
+// /api/users/...
+// --------------------------------------------
+
+app.use(
+    "/api/users",
+    userRoutes
+);
+
+// --------------------------------------------
+// Destinations
+// /api/destinations/...
+// --------------------------------------------
+
+app.use(
+    "/api/destinations",
+    destinationRoutes
+);
+
+// --------------------------------------------
+// Trips
+// /api/trips/...
+// --------------------------------------------
+
+app.use(
+    "/api/trips",
+    tripRoutes
+);
+
+// --------------------------------------------
+// Bookings
+// /api/bookings/...
+// --------------------------------------------
+
+app.use(
+    "/api/bookings",
+    bookingRoutes
+);
+
+// --------------------------------------------
+// Stops
+// /api/trips/:tripId/stops/...
+// --------------------------------------------
+
+app.use(
+    "/api",
+    stopRoutes
+);
+
+// --------------------------------------------
+// Budget
+// /api/trips/:tripId/budget
+// --------------------------------------------
+
+app.use(
+    "/api",
+    budgetRoutes
+);
+
+// Expenses
+app.use(
+    "/api",
+    expenseRoutes
+);
+// --------------------------------------------
+// Activities
+// /api/activities/...
+// --------------------------------------------
+
+app.use(
+    "/api/activities",
+    activityRoutes
+);
+
+// --------------------------------------------
+// Itinerary Activities
+// /api/trips/:tripId/...
+// /api/itinerary-activities/...
+// --------------------------------------------
+
+app.use(
+    "/api",
+    itineraryActivityRoutes
+);
+
+
+// ============================================
+// 404 ROUTE
+// ============================================
+
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -40,8 +175,27 @@ app.use((req, res) => {
     });
 });
 
+// ============================================
+// GLOBAL ERROR HANDLER
+// ============================================
+
+app.use((err, req, res, next) => {
+    console.error("SERVER ERROR:", err);
+
+    res.status(500).json({
+        success: false,
+        message: "Internal server error"
+    });
+});
+
+// ============================================
+// START SERVER
+// ============================================
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`GlobeTrotter Backend running on http://localhost:${PORT}`);
+    console.log(
+        `GlobeTrotter Backend running on http://localhost:${PORT}`
+    );
 });
