@@ -1,0 +1,1 @@
+// Cost calculation utility placeholder.

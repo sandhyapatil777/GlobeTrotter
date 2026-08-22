@@ -1,0 +1,1 @@
+// Itinerary activity model placeholder.
