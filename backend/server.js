@@ -19,6 +19,10 @@ const itineraryActivityRoutes = require("./routes/itineraryActivityRoutes");
 const budgetRoutes = require("./routes/budgetRoutes");
 const expenseRoutes =
     require("./routes/expenseRoutes");
+    const calendarRoutes =
+    require("./routes/calendarRoutes");
+    const shareRoutes =
+    require("./routes/shareRoutes");
 
 // ============================================
 // ENVIRONMENT VARIABLES
@@ -162,7 +166,15 @@ app.use(
     "/api",
     itineraryActivityRoutes
 );
-
+app.use(
+    "/api",
+    calendarRoutes
+);
+// Public / Shared Itineraries
+app.use(
+    "/api",
+    shareRoutes
+);
 
 // ============================================
 // 404 ROUTE
